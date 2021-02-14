@@ -1,24 +1,25 @@
-import {SET_USER}from './action';
+import { SET_USER } from './action';
 
 const initialState = {
-   
-   name:'duda',
-   lastName:'dudo',
-   email:'duda@gmail.com'
-  
- }
+    user:{
+   name: 'duda',
+    lastName: 'dudo',
+    email: 'duda@gmail.com'
+    },
+ 
+
+}
 
 
-export default function (state = initialState,  action){
-    let newstate;
-    switch( action.type){
+export let reducer = (state = initialState, action) => {
+    switch (action.type) {
         case SET_USER:
-            return{
+            return {
+                user: action.payload,
                 ...state,
-                initialState: newstate,
             }
-            default:
-                return state;
+        default:
+            return state;
 
-    }  
+    }
 }

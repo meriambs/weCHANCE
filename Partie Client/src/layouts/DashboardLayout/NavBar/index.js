@@ -23,14 +23,16 @@ import {
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
-import { setuser } from "../../../redux/action";
-import { useDispatch } from "react-redux";
-// import {useSelector} from 'react-redux';
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
-};
+// import { setuser } from "../../../redux/action";
+// import { useDispatch } from "react-redux";
+import  {useSelector} from 'react-redux';
+//////////////////////
+// const user = {
+//   avatar: '/static/images/avatars/avatar_6.png',
+//   jobTitle: 'Senior Developer',
+//   name: 'Katarina Smith'
+// };
+
 
 const items = [
   {
@@ -91,10 +93,17 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const NavBar = ({ onMobileClose, openMobile }) => {
-  
-let dispatch=useDispatch();
 
+const NavBar = ({ onMobileClose, openMobile }) => {
+  const user=useSelector((state =>state.user))
+// let dispatch=useDispatch();
+//indication du post 
+let jobTitle="" ;
+ if(user.isRecruiter == true){
+          jobTitle= 'Recuted'
+        }else {
+          jobTitle = 'Candidate'
+        }
   const classes = useStyles();
   const location = useLocation();
   useEffect(() => {
@@ -104,28 +113,30 @@ let dispatch=useDispatch();
   }, [location.pathname]);
 
   const content = (
+
     <Box
       height="100%"
       display="flex"
       flexDirection="column"
     >
+   
       <Box
         alignItems="center"
         display="flex"
         flexDirection="column"
         p={2}
       >
-        <Avatar
+       <Avatar
           className={classes.avatar}
           component={RouterLink}
-          src={user.avatar}
+          src='/static/images/avatars/avatar_6.png'
           to="/app/account"
         />
         <Typography
           className={classes.name}
           color="textPrimary"
           variant="h5"
-         dispatch(setuser({user.name}))
+       
         >
           {user.name}
         </Typography>
@@ -133,7 +144,7 @@ let dispatch=useDispatch();
           color="textSecondary"
           variant="body2"
         >
-          {user.jobTitle}
+          {jobTitle}
         </Typography>
       </Box>
       <Divider />

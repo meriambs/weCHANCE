@@ -1,10 +1,10 @@
 
-export const SET_USER = "GET_USER";
+export const SET_USER = "SET_USER";
 
 
-export function setuser(todo){
+export function setuser(user){
     return {
         type:SET_USER,
-        payload:todo,
+        payload:user,
     }
 }

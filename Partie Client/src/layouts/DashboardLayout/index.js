@@ -5,8 +5,9 @@ import NavBar from './NavBar';
 import TopBar from './TopBar';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import axios from 'axios';
-// import { useDispatch } from "react-redux";
-// let dispatch=useDispatch();
+import { setuser } from "../../redux/action";
+import { useDispatch } from "react-redux";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const token = localStorage.getItem('token');
 const DashboardLayout = () => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   if(!token) {
@@ -49,7 +51,8 @@ const DashboardLayout = () => {
         headers: {"x-auth-token": token}
     }
     )
-
+    dispatch(setuser(dis.data[0]));
+// console.log('dis',dis.data[0]);
     //  ici on a la const enregistrée dan redux et la modification des nom du profil .
     
   
