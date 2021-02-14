@@ -23,7 +23,9 @@ import {
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
-import {useSelector} from 'react-redux';
+import { setuser } from "../../../redux/action";
+import { useDispatch } from "react-redux";
+// import {useSelector} from 'react-redux';
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   jobTitle: 'Senior Developer',
@@ -90,8 +92,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 const NavBar = ({ onMobileClose, openMobile }) => {
-const x=useSelector(state => state.user);
-console.log('x',x);
+  
+let dispatch=useDispatch();
 
   const classes = useStyles();
   const location = useLocation();
@@ -123,6 +125,7 @@ console.log('x',x);
           className={classes.name}
           color="textPrimary"
           variant="h5"
+         dispatch(setuser({user.name}))
         >
           {user.name}
         </Typography>
