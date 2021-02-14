@@ -13,10 +13,6 @@ let JobSchema = new mongoose.Schema({
       type:String,
         required: true,
   },
-  JobBenefits:{
-      type:String,
-      required:true
-  },
   JobRequirements:{
       type:String,
       required:true
@@ -24,11 +20,6 @@ let JobSchema = new mongoose.Schema({
   HowToApply:{
       type:String,
       required:true
-  },
-   date:{
-
-    type:Date,
-    default:Date.now()
   },
   recruteurName:{
       type:String,

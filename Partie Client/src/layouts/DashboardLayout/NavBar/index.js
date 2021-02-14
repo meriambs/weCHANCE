@@ -23,15 +23,10 @@ import {
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
-// import { setuser } from "../../../redux/action";
-// import { useDispatch } from "react-redux";
+
 import  {useSelector} from 'react-redux';
 //////////////////////
-// const user = {
-//   avatar: '/static/images/avatars/avatar_6.png',
-//   jobTitle: 'Senior Developer',
-//   name: 'Katarina Smith'
-// };
+
 
 
 const items = [
@@ -39,41 +34,56 @@ const items = [
     href: '/app/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
+    
+  },
+   {
+    href: '/app/creatJobOffer',
+    icon: BarChartIcon,
+    title: 'AddJob',
+     isRecruiter:true
+    
   },
    {
      href: '/app/customers',
      icon: UsersIcon,
-     title: 'Customers'
+     title: 'Customers',
+     isRecruiter:true
    },
   {
     href: '/app/products',
     icon: ShoppingBagIcon,
     title: 'Products'
+    
   },
   {
     href: '/app/account',
     icon: UserIcon,
     title: 'Account'
+ 
   },
   {
     href: '/app/settings',
     icon: SettingsIcon,
     title: 'Settings'
+    
   },
   {
     href: '/login',
     icon: LockIcon,
     title: 'Login'
+   
   },
   {
     href: '/register',
     icon: UserPlusIcon,
     title: 'Register'
+  
   },
   {
     href: '/404',
     icon: AlertCircleIcon,
-    title: 'Error'
+    title: 'Error',
+    
   }
 ];
 
@@ -96,7 +106,7 @@ const useStyles = makeStyles(() => ({
 
 const NavBar = ({ onMobileClose, openMobile }) => {
   const user=useSelector((state =>state.user))
-// let dispatch=useDispatch();
+
 //indication du post 
 let jobTitle="" ;
  if(user.isRecruiter == true){
@@ -150,7 +160,10 @@ let jobTitle="" ;
       <Divider />
       <Box p={2}>
         <List>
-          {items.map((item) => (
+          {items.filter(e=>
+            !(e.isRecruiter && !user.isRecruiter)
+          )
+          .map((item) => (
             <NavItem
               href={item.href}
               key={item.title}
