@@ -40,7 +40,7 @@ const items = [
     href: '/app/creatJobOffer',
     icon: BarChartIcon,
     title: 'AddJob',
-     isRecruiter:true
+    //  isRecruiter:true
     
   },
    {

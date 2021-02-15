@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Formik , Field  } from 'formik';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { Formik  } from 'formik';
+
 import {
   Box,
   Button,
+  Container,
   Card,
   CardContent,
   CardHeader,
@@ -13,58 +17,69 @@ import {
   TextField,
   makeStyles
 } from '@material-ui/core';
+import Page from 'src/components/Page';
+import axios from 'axios';
 
-const states = [
-  {
-    value: 'alabama',
-    label: 'Alabama'
-  },
-  {
-    value: 'new-york',
-    label: 'New York'
-  },
-  {
-    value: 'san-francisco',
-    label: 'San Francisco'
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.dark,
+    height: '100%',
+    paddingBottom: theme.spacing(3),
+    paddingTop: theme.spacing(3)
   }
-];
-
-const useStyles = makeStyles(() => ({
-  root: {}
 }));
 
-const ProfileDetails = ({ className, ...rest }) => {
+const ProfileDetails = () => {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    SocieteName: 'maladaska',
-    adress: 'Smith 1002 lh ',
-    JobDescription: 'demo',
-    JobRequirements: 'sfbteqdfn ',
-    HowToApply: 'Alabangnwf ma',
-    recruteurName: 'USsrbndA'
-  });
-
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    });
-  };
+  //ici c'est pour quand on valide il 'ya Link vers une autre page
+  const navigate = useNavigate();
 
   return (
-    <form onSubmit={handleSubmit}
-      autoComplete="off"
-      noValidate
-      className={clsx(classes.root, className)}
-      {...rest}
+     <Page
+      className={classes.root}
+      title="Register"
     >
-    onSubmit={async(values) => {
-              const res = await axios.post('http://127.0.0.1:3003/profil',{...values})
+     <Container maxWidth="sm">
+    {/* //debut partie Formik : */}
+
+<Formik
+            initialValues={{
+              SocieteName: '',
+              adress: '',
+              JobDescription: '',
+              JobRequirements: '',
+              HowToApply: '',
+              recruteurName: ''
+            }}
+            validationSchema={
+              Yup.object().shape({
+                SocieteName: Yup.string().max(255).required('SocieteName is required'),
+                adress: Yup.string().max(255).required('adress name is required'),
+                JobDescription: Yup.string().max(255).required('JobDescription name is required'),
+                JobRequirements: Yup.string().max(255).required('JobRequirements is required'),
+                HowToApply: Yup.string().max(255).required('HowToApply is required'),
+                recruteurName: Yup.string().max(255).required('recruteurName is required'),
+                // isRecruiter: Yup.boolean().oneOf([true], 'This field must be checked')
+              })
+            }
+            onSubmit={async(values) => {
+              const res = await axios.post('http://127.0.0.1:3003/post',{...values})
                             console.log('res', res);
 
-              {/* navigate('/login', { replace: true }) */}
+              navigate('/app/products', { replace: true })
               
             }}
+          >
+            {({
+              errors,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+              touched,
+              values
+            }) => (
+    <form onSubmit={handleSubmit}>
       <Card>
         <CardHeader
           subheader="The information can be edited"
@@ -82,10 +97,12 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
+              error={Boolean(touched.SocieteName && errors.SocieteName)}
                 fullWidth
-                helperText="Please specify the first name"
+                helperText={touched.SocieteName && errors.SocieteName}
                 label="SocieteName"
                 name="SocieteName"
+                 onBlur={handleBlur}
                 onChange={handleChange}
                 required
                 value={values.SocieteName}
@@ -98,9 +115,12 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
+              error={Boolean(touched.adress && errors.adress)}
                 fullWidth
+                  helperText={touched.adress && errors.adress}
                 label="adress"
                 name="adress"
+                onBlur={handleBlur}
                 onChange={handleChange}
                 required
                 value={values.adress}
@@ -113,9 +133,12 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
+               error={Boolean(touched.JobDescription && errors.JobDescription)}
                 fullWidth
+                helperText={touched.JobDescription && errors.JobDescription}
                 label="JobDescription"
                 name="JobDescription"
+                onBlur={handleBlur}
                 onChange={handleChange}
                 required
                 value={values.JobDescription}
@@ -128,11 +151,14 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
+              error={Boolean(touched.JobRequirements && errors.JobRequirements)}
                 fullWidth
+                helperText={touched.JobRequirements && errors.JobRequirements}
                 label="JobRequirements"
                 name="JobRequirements"
+                onBlur={handleBlur}
                 onChange={handleChange}
-                type="number"
+               required
                 value={values.JobRequirements}
                 variant="outlined"
               />
@@ -143,9 +169,12 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
+                error={Boolean(touched.HowToApply && errors.HowToApply)}
                 fullWidth
+                helperText={touched.HowToApply && errors.HowToApply}
                 label="HowToApply"
                 name="HowToApply"
+                 onBlur={handleBlur}
                 onChange={handleChange}
                 required
                 value={values.HowToApply}
@@ -158,9 +187,12 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
+                 error={Boolean(touched.recruteurName && errors.recruteurName)}
                 fullWidth
+                helperText={touched.recruteurName && errors.recruteurName}
                 label="recruteurName"
                 name="recruteurName"
+                 onBlur={handleBlur}
                 onChange={handleChange}
                 required
                 value={values.recruteurName}
@@ -177,14 +209,35 @@ const ProfileDetails = ({ className, ...rest }) => {
           p={2}
         >
           <Button
+          disabled={isSubmitting}
+             fullWidth
             color="primary"
+            variant="contained"
+             type="submit"
             variant="contained"
           >
             Save details
           </Button>
         </Box>
+         <Box
+          display="flex"
+          justifyContent="flex-end"
+          p={2}
+        >
+          <Button
+             fullWidth
+            color="primary"
+            variant="contained"
+          >
+            Change Some details !
+          </Button>
+        </Box>
       </Card>
     </form>
+    )}
+          </Formik>
+    </Container>
+    </Page>
   );
 };
 
