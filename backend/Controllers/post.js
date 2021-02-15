@@ -3,7 +3,7 @@ const { body, validationResult } = require('express-validator');
 
 
 
-const findPost= async (res,req)=>{
+const findPost= async (req , res)=>{
  const returnPost = await Joob.find();
      return res.send(returnPost)
      //return res.send('Post page')

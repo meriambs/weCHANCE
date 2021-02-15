@@ -46,13 +46,13 @@ const items = [
    {
      href: '/app/customers',
      icon: UsersIcon,
-     title: 'Customers',
+     title: 'Candidates',
      isRecruiter:true
    },
   {
     href: '/app/products',
     icon: ShoppingBagIcon,
-    title: 'Products'
+    title: 'Job Offer'
     
   },
   {

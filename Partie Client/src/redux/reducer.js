@@ -1,4 +1,4 @@
-import { SET_USER } from './action';
+import { SET_USER ,SET_OFFER} from './action';
 
 const initialState = {
     user:{
@@ -6,6 +6,14 @@ const initialState = {
     lastName: 'dudo',
     email: 'duda@gmail.com'
     },
+offer:{
+     SocieteName: 'zara',
+              adress: 'zara 123',
+              JobDescription: 'zara zara',
+              JobRequirements: 'zaraaa zaraaa',
+              HowToApply: 'zaraa zaraaaaaa',
+              recruteurName: 'azuma'
+}
  
 
 }
@@ -19,6 +27,12 @@ export let reducer = (state = initialState, action) => {
                                 ...state,
 
                 user: action.payload,
+            };
+             case SET_OFFER:
+            return {
+                                ...state,
+
+                offer: action.payload,
             }
         default:
             return state;

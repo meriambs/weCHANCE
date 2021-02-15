@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
 
 const Profile = ({ className, ...rest }) => {
   const classes = useStyles();
- const user=useSelector((state =>state.user))
+//  const user=useSelector((state =>state.user))
 
   return (
     <Card

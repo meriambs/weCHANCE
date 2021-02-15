@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
   Box,
   Container,
@@ -7,9 +7,9 @@ import {
 } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
-import Toolbar from './Toolbar';
+// import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
-import data from './data';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,15 +25,24 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductList = () => {
   const classes = useStyles();
-  const [products] = useState(data);
-
+  const [products,setProducts] = useState([]);
+ useEffect(() => {
+    const fetchOffers = async() => {
+  
+     const dis = await axios.get('http://localhost:3003/post'
+    )
+    setProducts(dis.data);
+  }
+    
+    fetchOffers()
+  }, [])
   return (
     <Page
       className={classes.root}
       title="Products"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        {/* <Toolbar /> */}
         <Box mt={3}>
           <Grid
             container

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import {
   Avatar,
   Box,
+  Button,
   Card,
   CardContent,
   Divider,
@@ -13,6 +14,8 @@ import {
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import moment from 'moment';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,10 +31,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const ProductCard = ({ className, product, ...rest }) => {
   const classes = useStyles();
-
+ const navigate = useNavigate();
+ const handl=()=>{
+    navigate(`/app/JobOffer/${product._id}`, { replace: true })
+              
+ }
   return (
+   
     <Card
       className={clsx(classes.root, className)}
       {...rest}
@@ -44,7 +53,7 @@ const ProductCard = ({ className, product, ...rest }) => {
         >
           <Avatar
             alt="Product"
-            src={product.media}
+            src={product.SocieteName}
             variant="square"
           />
         </Box>
@@ -54,14 +63,14 @@ const ProductCard = ({ className, product, ...rest }) => {
           gutterBottom
           variant="h4"
         >
-          {product.title}
+          {product.adress}
         </Typography>
         <Typography
           align="center"
           color="textPrimary"
           variant="body1"
         >
-          {product.description}
+          {product.JobDescription}
         </Typography>
       </CardContent>
       <Box flexGrow={1} />
@@ -85,25 +94,32 @@ const ProductCard = ({ className, product, ...rest }) => {
               display="inline"
               variant="body2"
             >
-              Updated 2hr ago
+              { moment(product.date).format('DD/MM/YYYY')}
             </Typography>
           </Grid>
           <Grid
             className={classes.statsItem}
             item
           >
-            <GetAppIcon
-              className={classes.statsIcon}
-              color="action"
-            />
             <Typography
               color="textSecondary"
               display="inline"
               variant="body2"
             >
-              {product.totalDownloads}
-              {' '}
-              Downloads
+              <Box
+          display="flex"
+          justifyContent="flex-end"
+          p={2}
+        >
+          <Button
+             fullWidth
+            color="primary"
+            variant="contained"
+            onClick={handl}
+          >
+           View Some details !
+          </Button>
+        </Box>
             </Typography>
           </Grid>
         </Grid>
