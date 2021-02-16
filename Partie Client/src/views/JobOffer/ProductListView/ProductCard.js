@@ -15,7 +15,7 @@ import {
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import moment from 'moment';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,9 +35,10 @@ const useStyles = makeStyles((theme) => ({
 const ProductCard = ({ className, product, ...rest }) => {
   const classes = useStyles();
  const navigate = useNavigate();
+    const { id } = useParams() 
  const handl=()=>{
     navigate(`/app/JobOffer/${product._id}`, { replace: true })
-              
+          console.log('id',id)
  }
   return (
    

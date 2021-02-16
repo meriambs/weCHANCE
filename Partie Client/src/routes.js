@@ -10,7 +10,8 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/JobOffer/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
-import JobCreateView from  'src/views/CreateJobOffer/JobCreateView'
+import JobCreateView from  'src/views/CreateJobOffer/JobCreateView';
+import GetJobView from 'src/views/GetJobOffer/GetJobView'
 
 const routes = [
   {
@@ -22,7 +23,7 @@ const routes = [
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
-      { path: 'JobOffer/:id', element: <ProductListView /> },
+      { path: 'JobOffer/:id', element: <GetJobView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]

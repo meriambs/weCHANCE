@@ -10,6 +10,7 @@ import Page from 'src/components/Page';
 // import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
 import axios from 'axios';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,12 +27,15 @@ const useStyles = makeStyles((theme) => ({
 const ProductList = () => {
   const classes = useStyles();
   const [products,setProducts] = useState([]);
+  
  useEffect(() => {
     const fetchOffers = async() => {
   
      const dis = await axios.get('http://localhost:3003/post'
     )
     setProducts(dis.data);
+    console.log('data',dis.data)
+      
   }
     
     fetchOffers()
