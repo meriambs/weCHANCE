@@ -8,6 +8,11 @@ const findPost= async (req , res)=>{
      return res.send(returnPost)
      //return res.send('Post page')
 }
+const findSpecifiPost= async (req , res)=>{
+ const returnSpecificPost = await Joob.find({_id:req.params.id});
+     return res.send(returnSpecificPost)
+     //return res.send('Post page')
+}
 
 //la partie creation
  const createPost = async  (req, res) => {
@@ -42,4 +47,5 @@ module.exports = {
     createPost,
   findandUpdatePost,
   deletePost,
+  findSpecifiPost
 }

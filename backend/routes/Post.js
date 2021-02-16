@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const {  findPost,createPost,findandUpdatePost,deletePost } = require('../Controllers/post');
+const {  findPost,createPost,findandUpdatePost,deletePost,findSpecifiPost } = require('../Controllers/post');
 const { body, validationResult } = require('express-validator');
 //ici on a les post que le recruteur peut ecrire donc un get , un post edit ainsi qu'un delete,
 /* GET users listing. */
 router.get('/',findPost);
 // router.get('/:id', findUsers);
-
+router.get('/:id',findSpecifiPost);
 /* POST users listing. */
 
 router.post(
