@@ -10,7 +10,7 @@ import {
   CardHeader,
   Divider,
   Grid,
-  TextField,
+  Typography,
   makeStyles
 } from '@material-ui/core';
 import  {useSelector} from 'react-redux';
@@ -49,22 +49,23 @@ const ProfileDetails = ({ className, ...rest }) => {
               md={6}
               xs={12}
             >
-              <TextField
+              <Typography
                 fullWidth
                 helperText="Please specify the first name"
                 label="First name"
                 name="firstName"
                 
-                value={user.firstName}
+                value={user.name}
                 variant="outlined"
-              />
+              > <h2>Name:</h2>
+              {user.name}</Typography>
             </Grid>
             <Grid
               item
               md={6}
               xs={12}
             >
-              <TextField
+              <Typography
                 fullWidth
                 label="Last name"
                 name="lastName"
@@ -77,7 +78,7 @@ const ProfileDetails = ({ className, ...rest }) => {
               md={6}
               xs={12}
             >
-              <TextField
+              <Typography
                 fullWidth
                 label="Email Address"
                 name="email"
