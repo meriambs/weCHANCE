@@ -1,63 +1,35 @@
-
 import React, { useEffect, useState } from 'react';
 
-// import Button from '@material-ui/core/Button';
-import Page from 'src/components/Page';
-//  import GetDetails from './GetDetails';
- import axios from 'axios';
-//  import index from '../../JobOffer/ProductListView/ProductCard'
-// import {useParams} from 'react-router-dom'
 import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import moment from 'moment';
 
-
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-// import moment from 'moment';
 import {
-  
-  Avatar,
   Box,
   Button,
+  Container,
   Card,
-  CardActions,
   CardContent,
-  Divider,
+  CardHeader,
   Typography,
-  
+  Divider,
+ 
+  TextField,
+  makeStyles
 } from '@material-ui/core';
-import moment from 'moment';
-const styles = makeStyles((theme) => ({
+import Page from 'src/components/Page';
+import axios from 'axios';
+
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    margin: 'auto',
-    marginBottom: '16px',
-    cursor: 'pointer',
-    marginTop: '16px',
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-  title: {
-    color: theme.palette.primary.main,
-    fontFamily: 'Roboto'
+    backgroundColor: theme.palette.background.dark,
+    height: '100%',
+    paddingBottom: theme.spacing(3),
+    paddingTop: theme.spacing(3)
   }
 }));
-
 const GetJobOffer = ({ className, ...rest }) => {
-     const classes = styles();
+     const classes = useStyles();
      const navigate = useNavigate();
  const {id}=useParams();
   console.log('id',id)
@@ -77,57 +49,155 @@ const GetJobOffer = ({ className, ...rest }) => {
           // console.log('id',id)
  }
   return (
-    <div className={classes.root}>
-      <Grid container>
-      
-      <Grid item xs={12} sm={6} container>
-      <Paper className={classes.paper} onClick>
-        <Grid container spacing={2}>
-          <Grid item>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
+     <Page
+      className={classes.root}
+      title="Register"
+    >
+     <Container maxWidth="sm">
+    
+      <Card>
+        <CardHeader
+          subheader="The information mise par le recruteur"
+          title="Lecture Job Offer"
+        />
+        <Divider />
+        <CardContent>
+          <Grid
+            container
+            spacing={3}
+          >
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+              <h4>Societe name</h4>
                   {jobOffer.SocieteName}
+                  
+                </Typography>
+                
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+              <h4>Societe Description</h4>
                   {jobOffer.JobDescription}
                 </Typography>
-                 <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
-                 
-                  {jobOffer.JobDescription}
+                
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 <h4> Job Requirements</h4>
+                  {jobOffer.JobRequirements}
+                  
                 </Typography>
-                   <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
-                 
-                  {jobOffer.HowToApply}
-                </Typography>
-                <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
-                 
+                
+            </Grid>
+              <Grid
+              item
+              md={6}
+              xs={12}
+            >
+               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 <h4> Job Benefits</h4>
                   {jobOffer.JobBenefits}
+                  
                 </Typography>
-                 <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
-                 
+                
+            </Grid>
+                <Grid
+              item
+              md={6}
+              xs={12}
+            >
+               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 <h4> Job HowToApply</h4>
+                  {jobOffer.HowToApply}
+                  
+                </Typography>
+                
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+ <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                  <h4>Societe name</h4>
+                  {jobOffer.JobDescription}
+                </Typography>
+                
+            </Grid>
+             <Grid
+              item
+              md={6}
+              xs={12}
+            >
+               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 <h4>Recruteur Name </h4>
+                  {jobOffer.recruteurName}
+                  
+                </Typography>
+                
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 <h4>Societe name</h4>
                   {jobOffer.SocieteName}
+                  
                 </Typography>
-                <Typography variant="body2" gutterBottom>
-                    {jobOffer.adress}
-                </Typography>
-              <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+  <Typography variant="body2" style={{ cursor: 'pointer' }}>
+  <h4>Date </h4>
                   {moment(jobOffer.date).format('MMMM Do YYYY')}
                 </Typography>
-              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Paper>
-      </Grid>
-
-  </Grid>
-   <Button variant="contained" color="primary" disableElevation onClick={handle}>
-  Disable elevation
-</Button>
-    </div>
-  )
+        </CardContent>
+        <Divider />
+        <Box
+          display="flex"
+          justifyContent="flex-end"
+          p={2}
+        >
+          <Button
+        onClick={handle}
+             fullWidth
+            color="primary"
+            variant="contained"
+            
+            variant="contained"
+          >
+            Postuler !
+          </Button>
+        </Box>
+       
+      </Card>
+   
+    </Container>
+    </Page>
+  );
 };
+
+
 GetJobOffer.propTypes = {
   className: GetJobOffer.string
 };

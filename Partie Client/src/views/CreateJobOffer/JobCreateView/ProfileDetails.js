@@ -219,19 +219,7 @@ const ProfileDetails = () => {
             Save details
           </Button>
         </Box>
-         <Box
-          display="flex"
-          justifyContent="flex-end"
-          p={2}
-        >
-          <Button
-             fullWidth
-            color="primary"
-            variant="contained"
-          >
-            Change Some details !
-          </Button>
-        </Box>
+       
       </Card>
     </form>
     )}
