@@ -7,7 +7,7 @@ import {
 import Page from 'src/components/Page';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
-
+// import AttachFileIcon from '@material-ui/icons/AttachFile';
 import  {useSelector} from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +49,7 @@ const user=useSelector((state =>state.user))
             <ProfileDetails />
           </Grid>
         </Grid>
+       
       </Container>
     </Page>
   );

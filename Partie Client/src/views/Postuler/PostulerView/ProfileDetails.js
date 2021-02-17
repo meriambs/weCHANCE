@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 import {
   Box,
   Button,
@@ -14,21 +15,6 @@ import {
 } from '@material-ui/core';
 import  {useSelector} from 'react-redux';
 
-// const states = [
-//   {
-//     value: 'alabama',
-//     label: 'Alabama'
-//   },
-//   {
-//     value: 'new-york',
-//     label: 'New York'
-//   },
-//   {
-//     value: 'san-francisco',
-//     label: 'San Francisco'
-//   }
-// ];
-
 const useStyles = makeStyles(() => ({
   root: {}
 }));
@@ -36,21 +22,9 @@ const useStyles = makeStyles(() => ({
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
   const user=useSelector((state =>state.user))
-  // const [values, setValues] = useState({
-  //   firstName: 'Katarina',
-  //   lastName: 'Smith',
-  //   email: 'demo@devias.io',
-  //   phone: '',
-  //   state: 'Alabama',
-  //   country: 'USA'
-  // });
+  
 
-  // const handleChange = (event) => {
-  //   setValues({
-  //     ...values,
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
+
 
   return (
     <form
@@ -121,11 +95,14 @@ const ProfileDetails = ({ className, ...rest }) => {
           justifyContent="flex-end"
           p={2}
         >
+        
+          <AttachFileIcon/>
+       
           <Button
             color="primary"
             variant="contained"
           >
-            Save details
+            Sava
           </Button>
         </Box>
       </Card>

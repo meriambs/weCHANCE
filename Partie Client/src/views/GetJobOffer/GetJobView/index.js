@@ -120,6 +120,7 @@ const GetJobOffer = ({ className, ...rest }) => {
         </Grid>
       </Paper>
       </Grid>
+
   </Grid>
    <Button variant="contained" color="primary" disableElevation onClick={handle}>
   Disable elevation
