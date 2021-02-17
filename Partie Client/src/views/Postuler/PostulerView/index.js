@@ -8,6 +8,7 @@ import Page from 'src/components/Page';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
 
+import  {useSelector} from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Account = () => {
   const classes = useStyles();
+const user=useSelector((state =>state.user))
 
   return (
     <Page

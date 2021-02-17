@@ -92,6 +92,22 @@ const GetJobOffer = ({ className, ...rest }) => {
                   {jobOffer.SocieteName}
                   {jobOffer.JobDescription}
                 </Typography>
+                 <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 
+                  {jobOffer.JobDescription}
+                </Typography>
+                   <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 
+                  {jobOffer.HowToApply}
+                </Typography>
+                <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 
+                  {jobOffer.JobBenefits}
+                </Typography>
+                 <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+                 
+                  {jobOffer.SocieteName}
+                </Typography>
                 <Typography variant="body2" gutterBottom>
                     {jobOffer.adress}
                 </Typography>
