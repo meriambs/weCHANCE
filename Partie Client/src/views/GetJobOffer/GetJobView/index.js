@@ -77,9 +77,9 @@ const GetJobOffer = ({ className, ...rest }) => {
           // console.log('id',id)
  }
   return (
-     <div className={classes.root}>
+    <div className={classes.root}>
       <Grid container>
- 
+      
       <Grid item xs={12} sm={6} container>
       <Paper className={classes.paper} onClick>
         <Grid container spacing={2}>
@@ -87,8 +87,7 @@ const GetJobOffer = ({ className, ...rest }) => {
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+              <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
                   {jobOffer.SocieteName}
                   {jobOffer.JobDescription}
                 </Typography>
@@ -111,9 +110,7 @@ const GetJobOffer = ({ className, ...rest }) => {
                 <Typography variant="body2" gutterBottom>
                     {jobOffer.adress}
                 </Typography>
-              </Grid>
               <Grid item>
-             
                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
                   {moment(jobOffer.date).format('MMMM Do YYYY')}
                 </Typography>
@@ -123,17 +120,13 @@ const GetJobOffer = ({ className, ...rest }) => {
         </Grid>
       </Paper>
       </Grid>
-      <Grid item xs={12} sm={3} container></Grid>
-      </Grid>
-      
-      <Button variant="contained" color="primary" disableElevation onClick={handle}>
+  </Grid>
+   <Button variant="contained" color="primary" disableElevation onClick={handle}>
   Disable elevation
 </Button>
-
     </div>
-  );
+  )
 };
-
 GetJobOffer.propTypes = {
   className: GetJobOffer.string
 };
