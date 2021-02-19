@@ -42,7 +42,7 @@ const ProductCard = ({ className, product, ...rest }) => {
  }
 
  const handlee=()=>{
-navigate(`/app/Candidates/${product._id}`, { replace: true })
+navigate(`/app/Candidates`, { replace: true })
           console.log('id',id)
  }
   return (

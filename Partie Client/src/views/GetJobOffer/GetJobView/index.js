@@ -183,7 +183,7 @@ const GetJobOffer = ({ className, ...rest }) => {
              fullWidth
             color="primary"
             variant="contained"
-            
+            variant="contained"
           >
             Postuler !!
           </Button>

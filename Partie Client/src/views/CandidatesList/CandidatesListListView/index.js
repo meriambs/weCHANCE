@@ -30,7 +30,7 @@ const CandidatesListListView = () => {
      
         <Box mt={3}>
        
-           <Results  /> 
+           <Results customers={customers} /> 
         </Box>
       </Container>
     </Page>

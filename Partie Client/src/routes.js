@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
-import CandidatesListView from 'src/views/Candidates/CandidatesListView';
+import CandidatesListView from 'src/views/customer/CandidatesListView';
 import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
@@ -26,7 +26,7 @@ const routes = [
        { path: 'Welcome', element: <FrontView /> },
       { path: 'CandidatesList', element: <CandidatesListListView /> },
       { path: 'creatJobOffer', element: <JobCreateView /> },
-      { path: 'Candidates/:id', element: <CandidatesListView /> },
+      { path: 'Candidates', element: <CandidatesListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
       { path: 'postuler/:id', element: <PostulerView /> },

@@ -52,7 +52,7 @@ const DashboardLayout = () => {
     }
     )
     dispatch(setuser(dis.data[0]));
-// console.log('dis',dis.data[0]);
+ console.log('dis',dis.data);
     //  ici on a la const enregistrée dan redux et la modification des nom du profil .
     
   

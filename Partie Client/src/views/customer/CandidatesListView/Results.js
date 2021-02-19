@@ -146,6 +146,7 @@ const Results = ({ className, customers, ...rest }) => {
                   <TableCell>
                     {customer.email}
                   </TableCell>
+                 
                   <TableCell>
                    <CameraRollIcon/>
                   </TableCell>

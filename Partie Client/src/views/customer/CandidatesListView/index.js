@@ -27,9 +27,8 @@ const CandidatesListView = () => {
       title="Customers"
     >
       <Container maxWidth={false}>
-     
+      
         <Box mt={3}>
-       
            <Results customers={customers} /> 
         </Box>
       </Container>
