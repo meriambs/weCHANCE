@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
-
+app.use(express.static(path.join(__dirname, 'uploads/')))
 //connectionb db ;
 const connectDB = require("./config/db");
 

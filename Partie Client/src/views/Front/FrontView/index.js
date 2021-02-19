@@ -20,11 +20,10 @@ const useStyles = makeStyles((theme) => ({
 const Account = () => {
   const classes = useStyles();
 
-
   return (
     <Page
       className={classes.root}
-      title="Candidature"
+      title="Account"
     >
       <Container maxWidth="lg">
         <Grid
@@ -48,7 +47,6 @@ const Account = () => {
             <ProfileDetails />
           </Grid>
         </Grid>
-       
       </Container>
     </Page>
   );

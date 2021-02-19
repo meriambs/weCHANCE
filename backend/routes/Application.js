@@ -8,6 +8,6 @@ const multipartMiddleware = multipart()
 router.get('/all-candidates/:owner', applicationControler.readAll)
 // router.get('/:jobOffer', applicationControler.readRecruiterJobOffers)
 router.get('/offer/:JoobId', applicationControler.readJobOfferApplications)
-router.post('/', multipartMiddleware, applicationControler.apply);
+router.post('/:user', multipartMiddleware, applicationControler.apply);
 
 module.exports = router;

@@ -45,7 +45,7 @@ const GetJobOffer = ({ className, ...rest }) => {
      }, []);
 
       const handle=()=>{
-    navigate('/app/postuler', { replace: true })
+    navigate(`/app/postuler/${id}`, { replace: true });
           // console.log('id',id)
  }
   return (

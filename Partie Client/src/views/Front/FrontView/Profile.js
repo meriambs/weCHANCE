@@ -13,7 +13,15 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import  {useSelector} from 'react-redux';
+
+const user = {
+  avatar: '/static/images/avatars/avatar_6.png',
+  city: 'Los Angeles',
+  country: 'USA',
+  jobTitle: 'Senior Developer',
+  name: 'Katarina Smith',
+  timezone: 'GTM-7'
+};
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -25,7 +33,6 @@ const useStyles = makeStyles(() => ({
 
 const Profile = ({ className, ...rest }) => {
   const classes = useStyles();
-  const user=useSelector((state =>state.user))
 
   return (
     <Card
@@ -40,7 +47,7 @@ const Profile = ({ className, ...rest }) => {
         >
           <Avatar
             className={classes.avatar}
-            src='/static/images/avatars/avatar_6.png'
+            src={user.avatar}
           />
           <Typography
             color="textPrimary"
@@ -49,13 +56,18 @@ const Profile = ({ className, ...rest }) => {
           >
             {user.name}
           </Typography>
-         
           <Typography
-            className={classes.date}
             color="textSecondary"
             variant="body1"
           >
-            {`${moment().format('MM / DD / YYYY')}`}
+            {`${user.city} ${user.country}`}
+          </Typography>
+          <Typography
+            className={classes.dateText}
+            color="textSecondary"
+            variant="body1"
+          >
+            {`${moment().format('hh:mm A')} ${user.timezone}`}
           </Typography>
         </Box>
       </CardContent>

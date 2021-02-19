@@ -12,18 +12,22 @@ import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import JobCreateView from  'src/views/CreateJobOffer/JobCreateView';
 import GetJobView from 'src/views/GetJobOffer/GetJobView'
-import PostulerView from 'src/views/Postuler/PostulerView'
+import PostulerView from 'src/views/Postuler/PostulerView';
+import FrontView from  'src/views/Front/FrontView';
 const routes = [
   {
+    
     path: 'app',
+    
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <AccountView /> },
+       { path: 'Welcome', element: <FrontView /> },
       { path: 'creatJobOffer', element: <JobCreateView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
-      { path: 'postuler', element: <PostulerView /> },
+      { path: 'postuler/:id', element: <PostulerView /> },
       { path: 'JobOffer/:id', element: <GetJobView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }

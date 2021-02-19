@@ -14,16 +14,47 @@ import {
   makeStyles
 } from '@material-ui/core';
 import  {useSelector} from 'react-redux';
-
+import {DropzoneDialog} from 'material-ui-dropzone';
+import { IconButton } from '@material-ui/core';
+import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import CameraRollIcon from '@material-ui/icons/CameraRoll';
+ import ReactRecorder from '../../recorder/recordrtc-react/src/RecordPage.react';
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
 const ProfileDetails = ({ className, ...rest }) => {
+  const {id}=useParams();
   const classes = useStyles();
   const user=useSelector((state =>state.user))
   
+ const [open, setOpen] = useState(false);
+ const [video,setVideo] = useState(false);
+ const [cv,setCv]=useState();
+    const handleClose = () => {
+        setOpen(false)
+    }
+    const handleSave = async (files) => {
+        setCv(files[0]);
+        setOpen(false)
+        }
 
+ 
+    const handleOpen = () => {
+        setOpen(true)
+    }
+    const postuler= async()=>{
+      let fd = new FormData();
+      fd.append('fname', 'cv.name');
+      fd.append('data', cv);
+      fd.append('offer', id);
+       const res = await axios.post(`http://localhost:3003/application/${user._id}`,fd, {
+        headers: {
+          'Content-Type': 'multipart'}});
+    }
+
+    
 
 
   return (
@@ -36,7 +67,7 @@ const ProfileDetails = ({ className, ...rest }) => {
       <Card>
         <CardHeader
           subheader="Some  information "
-          title="Profile"
+          title="Candidature Profile "
         />
         <Divider />
         <CardContent>
@@ -52,12 +83,10 @@ const ProfileDetails = ({ className, ...rest }) => {
               <Typography
                 fullWidth
                 helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
-                
-                value={user.name}
+                label="name"
+                name="name"
                 variant="outlined"
-              > <h2>Name:</h2>
+              > <h3>Name:</h3>
               {user.name}</Typography>
             </Grid>
             <Grid
@@ -71,7 +100,9 @@ const ProfileDetails = ({ className, ...rest }) => {
                 name="lastName"
                 value={user.lastName}
                 variant="outlined"
-              />
+              > <h3>Last Name:</h3>
+              {user.lastName}
+              </Typography>
             </Grid>
             <Grid
               item
@@ -82,31 +113,55 @@ const ProfileDetails = ({ className, ...rest }) => {
                 fullWidth
                 label="Email Address"
                 name="email"
-                // onChange={handleChange}
-                // required
                 value={user.email}
                 variant="outlined"
-              />
+                > <h3>Email:</h3>
+              {user.email}
+              </Typography>  
             </Grid>
           </Grid>
         </CardContent>
         <Divider />
+
+    
+        
         <Box
           display="flex"
           justifyContent="flex-end"
           p={2}
         >
-        
+          <DropzoneDialog
+                open={open}
+                filesLimit={1}
+                onSave={handleSave}
+                showPreviews={true}
+                maxFileSize={5000000}
+                onClose={handleClose}
+            />
+            <IconButton onClick={()=>setVideo(true)}>
+ <CameraRollIcon/>
+            </IconButton>
+            <IconButton onClick={()=>setOpen(true)}>
           <AttachFileIcon/>
-       
+       </IconButton>
           <Button
             color="primary"
             variant="contained"
+            onClick={postuler}
           >
-            Sava
+            Postuler !
           </Button>
+          
         </Box>
       </Card>
+      {cv &&
+          <Typography >
+              {cv.name}
+              
+          </Typography>}
+          {
+            video && <ReactRecorder/>
+          }
     </form>
   );
 };

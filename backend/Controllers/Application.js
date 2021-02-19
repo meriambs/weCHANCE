@@ -3,7 +3,7 @@ const ApplicationModel = require('../Models/Application');
 const Joob = require('../Models/joboff');
 const VideoModel = require('../Models/Video');
 const Profile = require('../Models/Profile');
-
+const Media = require('../Models/Media');
 
 module.exports.readAll = async (req, res) => {
     const { owner } = req.params;
@@ -21,33 +21,27 @@ module.exports.readJobOfferApplications = async (req, res) => {
         .populate(['video','attachments', 'user', 'photo', 'profile']);
     res.json(applicationList);
 }
-
 module.exports.apply = async function(req, res) {
     const { candidate, offer, attachements} = req.body;
-    // console.log('attachements', attachements.split(','));
-    const attachementsArray = attachements.split(',');
-    const SavedVideo = await VideoModel
+    const { user } = req.params;
+    const { name, type } = req.files.data;
+    const SavedMedia = await Media
+    .create({
+        name,
+        extension: type,
+        type: 'profile',
+        user,
+    });
+    mv(req.files.data.path, `uploads/${SavedMedia._id}${name}`, {mkdirp: true},async function(r) {
+        const savedApplication = await ApplicationModel
         .create({
-            name: 'another one',
-            candidate,
-            offer
-        });
-    const profile = await Profile
-      .findOne({user: candidate})
-      .populate(['user', 'photo'])
-    const user = profile.user;
-    const photo = profile.photo;
-    const savedApplication = await ApplicationModel
-        .create({
-            profile: profile._id,
-            user: user._id,
-            photo: photo ? photo._id : null,
-            video: SavedVideo._id,
+          
+            user,
             offer,
-            attachments: attachementsArray,
+            attachments: [SavedMedia._id],
             createdAt: new Date()
         });
-        mv(req.files.data.path, `uploads/${SavedVideo._id}.webm`, {mkdirp: true},function(r) {
-            res.send(`upload successful ${SavedVideo}`)
-        })
+        res.send(savedApplication)
+    })
   }
+ 
