@@ -5,8 +5,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Profile from './Profile';
-import ProfileDetails from './ProfileDetails';
+import ButtonBases from './Profile';
+// import ProfileDetails from './ProfileDetails';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +36,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <Profile />
+            <ButtonBases />
           </Grid>
           <Grid
             item
@@ -44,7 +44,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <ProfileDetails />
+            {/* <ProfileDetails /> */}
           </Grid>
         </Grid>
       </Container>

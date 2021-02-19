@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
-import CustomerListView from 'src/views/customer/CustomerListView';
+import CandidatesListView from 'src/views/Candidates/CandidatesListView';
 import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
@@ -14,6 +14,7 @@ import JobCreateView from  'src/views/CreateJobOffer/JobCreateView';
 import GetJobView from 'src/views/GetJobOffer/GetJobView'
 import PostulerView from 'src/views/Postuler/PostulerView';
 import FrontView from  'src/views/Front/FrontView';
+import CandidatesListListView from 'src/views/CandidatesList/CandidatesListListView';
 const routes = [
   {
     
@@ -23,8 +24,9 @@ const routes = [
     children: [
       { path: 'account', element: <AccountView /> },
        { path: 'Welcome', element: <FrontView /> },
+      { path: 'CandidatesList', element: <CandidatesListListView /> },
       { path: 'creatJobOffer', element: <JobCreateView /> },
-      { path: 'customers', element: <CustomerListView /> },
+      { path: 'Candidates/:id', element: <CandidatesListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
       { path: 'postuler/:id', element: <PostulerView /> },

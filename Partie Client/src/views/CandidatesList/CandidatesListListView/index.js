@@ -6,7 +6,6 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Results from './Results';
-import Toolbar from './Toolbar';
 import data from './data';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CustomerListView = () => {
+const CandidatesListListView = () => {
   const classes = useStyles();
   const [customers] = useState(data);
 
@@ -28,13 +27,14 @@ const CustomerListView = () => {
       title="Customers"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+     
         <Box mt={3}>
-          <Results customers={customers} />
+       
+           <Results  /> 
         </Box>
       </Container>
     </Page>
   );
 };
 
-export default CustomerListView;
+export default CandidatesListListView;

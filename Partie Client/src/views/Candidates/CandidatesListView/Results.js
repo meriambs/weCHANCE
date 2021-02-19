@@ -18,6 +18,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import getInitials from 'src/utils/getInitials';
+import CameraRollIcon from '@material-ui/icons/CameraRoll';
+import SaveIcon from '@material-ui/icons/Save';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -99,14 +101,12 @@ const Results = ({ className, customers, ...rest }) => {
                 <TableCell>
                   Email
                 </TableCell>
+               
                 <TableCell>
-                  Location
+                  Video
                 </TableCell>
                 <TableCell>
-                  Phone
-                </TableCell>
-                <TableCell>
-                  Registration date
+                  Download Ficher
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -147,13 +147,10 @@ const Results = ({ className, customers, ...rest }) => {
                     {customer.email}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                   <CameraRollIcon/>
                   </TableCell>
                   <TableCell>
-                    {customer.phone}
-                  </TableCell>
-                  <TableCell>
-                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                   <SaveIcon/>
                   </TableCell>
                 </TableRow>
               ))}

@@ -139,7 +139,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 onClose={handleClose}
             />
             <IconButton onClick={()=>setVideo(true)}>
- <CameraRollIcon/>
+              <CameraRollIcon/>
             </IconButton>
             <IconButton onClick={()=>setOpen(true)}>
           <AttachFileIcon/>

@@ -44,7 +44,7 @@ const items = [
     
   },
    {
-     href: '/app/customers',
+     href: '/app/CandidatesList',
      icon: UsersIcon,
      title: 'Candidates',
      isRecruiter:true

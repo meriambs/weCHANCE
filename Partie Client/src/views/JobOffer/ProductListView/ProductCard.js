@@ -40,6 +40,11 @@ const ProductCard = ({ className, product, ...rest }) => {
     navigate(`/app/JobOffer/${product._id}`, { replace: true })
           console.log('id',id)
  }
+
+ const handlee=()=>{
+navigate(`/app/Candidates/${product._id}`, { replace: true })
+          console.log('id',id)
+ }
   return (
    
     <Card
@@ -121,6 +126,14 @@ const ProductCard = ({ className, product, ...rest }) => {
            View Some details !
           </Button>
         </Box>
+        <Button
+             fullWidth
+            color="primary"
+            variant="contained"
+            onClick={handlee}
+          >
+           View Candidates !
+          </Button>
             </Typography>
           </Grid>
         </Grid>

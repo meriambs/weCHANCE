@@ -184,9 +184,8 @@ const GetJobOffer = ({ className, ...rest }) => {
             color="primary"
             variant="contained"
             
-            variant="contained"
           >
-            Postuler !
+            Postuler !!
           </Button>
         </Box>
        
