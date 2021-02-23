@@ -13,8 +13,10 @@ import SettingsView from 'src/views/settings/SettingsView';
 import JobCreateView from  'src/views/CreateJobOffer/JobCreateView';
 import GetJobView from 'src/views/GetJobOffer/GetJobView'
 import PostulerView from 'src/views/Postuler/PostulerView';
-import FrontView from  'src/views/Front/FrontView';
+ import FrontView from  'src/views/Front/FrontView';
 import CandidatesListListView from 'src/views/CandidatesList/CandidatesListListView';
+
+
 const routes = [
   {
     
@@ -23,9 +25,10 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <AccountView /> },
-       { path: 'Welcome', element: <FrontView /> },
+       
       { path: 'CandidatesList', element: <CandidatesListListView /> },
       { path: 'creatJobOffer', element: <JobCreateView /> },
+      // { path: 'Welcome', element: <FrontView /> },
       { path: 'Candidates', element: <CandidatesListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
@@ -35,12 +38,14 @@ const routes = [
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
+  
   {
     path: '/',
-    element: <MainLayout />,
+    
     children: [
       { path: 'login', element: <LoginView /> },
       { path: 'register', element: <RegisterView /> },
+      { path: 'Welcome', element: <FrontView /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/app/dashboard" /> },
       { path: '*', element: <Navigate to="/404" /> }

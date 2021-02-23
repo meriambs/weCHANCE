@@ -1,55 +1,59 @@
 import React from 'react';
-import {
-  Container,
-  Grid,
-  makeStyles
-} from '@material-ui/core';
+
 import Page from 'src/components/Page';
-import ButtonBases from './Profile';
-// import ProfileDetails from './ProfileDetails';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import style from './style.css';
+import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.dark,
-    minHeight: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
-  }
-}));
 
-const Account = () => {
-  const classes = useStyles();
+const welcome = () => {
+   const navigate = useNavigate();
+  const singin=()=>{
+    navigate(`/login`, { replace: true });
+          // console.log('id',id)
+ }
+   const singup=()=>{
+    navigate(`/register`, { replace: true });
+          // console.log('id',id)
+ }
 
   return (
     <Page
-      className={classes.root}
-      title="Account"
+    className="Bsection"
+      title="Hire"
     >
-      <Container maxWidth="lg">
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xs={12}
-          >
-            <ButtonBases />
-          </Grid>
-          <Grid
-            item
-            lg={8}
-            md={6}
-            xs={12}
-          >
-            {/* <ProfileDetails /> */}
-          </Grid>
-        </Grid>
-      </Container>
+    
+    <section className="composcd">
+    <container className="imgcontainer">
+      <img src="/static/images/welcome.png"/>
+      </container>
+      <div className="textpart">
+      <h4>We Have 20.000 great job offers <span>YOU</span> deserve !</h4>
+        <h1>Largest Job Site In The World</h1>
+        <h3>Let's Join Our <span>Community</span> </h3>
+      </div>
+      
+    </section>
+    <section  className="button">
+      <Button className="buttonbt" onClick={singup}>Sing Up </Button>
+      <Button  className="boutondudroit" onClick={singin}>Sing In</Button>
+    </section>
+    <section className="sectbasimtxt">
+      <div className="txtimg">
+        <img src="/static/images/logWelcome/SearchMillions.png" alt="Search Millions of Jobs"/>
+        <h5>Millions of Job</h5>
+      </div>
+      <div className="txtimg">
+        <img src="/static/images/logWelcome/easytomanage.png" alt="Easy To Manage Jobs"/>
+        <h5>Easy to manage Job</h5>
+      </div>
+      <div className="txtimg">
+        <img src="/static/images/logWelcome/searchexpert.png" alt="Search Expert Candidates"/>
+        <h5>Expert Candidates</h5>
+      </div>
+    </section>
     </Page>
   );
 };
 
-export default Account;
+export default welcome;

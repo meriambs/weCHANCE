@@ -24,7 +24,7 @@ module.exports.readJobOfferApplications = async (req, res) => {
 module.exports.apply = async function(req, res) {
     const { candidate, offer, attachements} = req.body;
     const { user } = req.params;
-    // const { name, type } = req.files.data;
+    const { name, type } = req.files.data;
     const SavedMedia = await Media
     .create({
         name,
