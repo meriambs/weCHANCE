@@ -1,6 +1,7 @@
-import React from 'react';
+import React , {useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import axios from 'axios'
 import {
   Avatar,
   Box,
@@ -16,7 +17,6 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import moment from 'moment';
 import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
-
 import  {useSelector} from 'react-redux';
 /////
 const useStyles = makeStyles((theme) => ({
@@ -40,20 +40,22 @@ const ProductCard = ({ className, product, ...rest }) => {
     const { id } = useParams() 
      const user=useSelector((state =>state.user))
 
-    let Recru ;
-     if(user.isRecruiter == true){
-          Recru = false
-        }else {
-          Recru = true
-        }
-    console.log('recru',Recru)
+     let Recru ;
+      if(user.isRecruiter == true){
+           Recru = true
+       }else {
+           Recru = false
+         }
+     console.log('recru',Recru)
+  
+
  const handl=()=>{
     navigate(`/app/JobOffer/${product._id}`, { replace: true })
           console.log('id',id)
  }
 
- const handlee=()=>{
-navigate(`/app/Candidates`, { replace: true })
+const handlee=()=>{
+navigate(`/app/Candidates/${product._id}`, { replace: true })
           console.log('id',id)
  }
   return (
@@ -128,23 +130,23 @@ navigate(`/app/Candidates`, { replace: true })
           justifyContent="flex-end"
           p={2}
         >
-          {Recru && <Button
+           { ! Recru && <Button
              fullWidth
             color="primary"
             variant="contained"
             onClick={handl}
           >
            View Some details !
-          </Button>}
+          </Button> } 
         </Box>
-        {!Recru &&<Button
+        { Recru &&<Button
              fullWidth
             color="primary"
             variant="contained"
             onClick={handlee}
           >
            View Candidates !
-          </Button>}
+          </Button>} 
             </Typography>
           </Grid>
         </Grid>

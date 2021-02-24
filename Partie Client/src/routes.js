@@ -28,7 +28,7 @@ const routes = [
       // { path: 'CandidatesList', element: <CandidatesListListView /> },
       { path: 'creatJobOffer', element: <JobCreateView /> },
        //{ path: 'Welcome', element: <FrontView /> },
-      { path: 'Candidates', element: <CandidatesListView /> },
+      { path: 'Candidates/:id', element: <CandidatesListView /> },
       // { path: 'dashboard', element: <DashboardView /> },
       // { path: 'Job-offer', element: <ProductListView /> },
       { path: 'postuler/:id', element: <PostulerView /> },

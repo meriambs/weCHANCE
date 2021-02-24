@@ -20,6 +20,7 @@ import {
 import getInitials from 'src/utils/getInitials';
 import CameraRollIcon from '@material-ui/icons/CameraRoll';
 import SaveIcon from '@material-ui/icons/Save';
+import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Results = ({ className, customers, ...rest }) => {
+ const { id } = useParams() 
   const classes = useStyles();
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
