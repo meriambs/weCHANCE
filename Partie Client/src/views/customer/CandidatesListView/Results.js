@@ -91,6 +91,9 @@ const Results = ({ className,data, ...rest }) => {
     setPage(newPage);
   };
 
+  const download = (name)=>{
+    window.open(`http://localhost:3003/${name}`)
+  }
   return (
     
     <Card
@@ -169,7 +172,8 @@ const Results = ({ className,data, ...rest }) => {
                    <CameraRollIcon/>
                   </TableCell>
                   <TableCell>
-                   <SaveIcon/>
+                   <SaveIcon
+                   onClick={()=>download(customer.attachments[0].name)}></SaveIcon>
                   </TableCell>
                 </TableRow>
               ))}
