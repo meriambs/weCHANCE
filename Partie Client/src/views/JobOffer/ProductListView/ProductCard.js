@@ -17,6 +17,8 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import moment from 'moment';
 import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
 
+import  {useSelector} from 'react-redux';
+/////
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -36,6 +38,15 @@ const ProductCard = ({ className, product, ...rest }) => {
   const classes = useStyles();
  const navigate = useNavigate();
     const { id } = useParams() 
+     const user=useSelector((state =>state.user))
+
+    let Recru ;
+     if(user.isRecruiter == true){
+          Recru = false
+        }else {
+          Recru = true
+        }
+    console.log('recru',Recru)
  const handl=()=>{
     navigate(`/app/JobOffer/${product._id}`, { replace: true })
           console.log('id',id)
@@ -117,23 +128,23 @@ navigate(`/app/Candidates`, { replace: true })
           justifyContent="flex-end"
           p={2}
         >
-          <Button
+          {Recru && <Button
              fullWidth
             color="primary"
             variant="contained"
             onClick={handl}
           >
            View Some details !
-          </Button>
+          </Button>}
         </Box>
-        <Button
+        {!Recru &&<Button
              fullWidth
             color="primary"
             variant="contained"
             onClick={handlee}
           >
            View Candidates !
-          </Button>
+          </Button>}
             </Typography>
           </Grid>
         </Grid>

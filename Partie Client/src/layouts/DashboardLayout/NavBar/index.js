@@ -33,7 +33,7 @@ const items = [
   {
     href: '/app/dashboard',
     icon: BarChartIcon,
-    title: 'Dashboard'
+    title: 'Acceuil'
     
   },
    {
@@ -43,14 +43,14 @@ const items = [
     //  isRecruiter:true
     
   },
-   {
-     href: '/app/CandidatesList',
-     icon: UsersIcon,
-     title: 'Candidates',
-     isRecruiter:true
-   },
+  //  {
+  //    href: '/app/CandidatesList',
+  //    icon: UsersIcon,
+  //    title: 'Candidates',
+  //    isRecruiter:true
+  //  },
   {
-    href: '/app/products',
+    href: '/app/Job-offer',
     icon: ShoppingBagIcon,
     title: 'Job Offer'
     
@@ -58,7 +58,7 @@ const items = [
   {
     href: '/app/account',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Candidates'
  
   },
   {

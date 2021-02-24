@@ -48,7 +48,7 @@
 .sectbasimtxt{
            display: flex;
     justify-content: space-evenly;
-    margin-top: 143px;
+    margin-top: 173px;
     height: 160px;
     border-radius: -1;
     background-color: #6e63ff;
@@ -58,7 +58,7 @@
      color: white;
     font-family: serif;
     font-size: 21px;
-    margin-top: 16px;
+    margin-top: 26px;
 }
 
 .button{

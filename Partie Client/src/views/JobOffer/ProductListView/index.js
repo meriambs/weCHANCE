@@ -7,8 +7,9 @@ import {
 } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
-// import Toolbar from './Toolbar';
+import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
+import Test from './Test';
 import axios from 'axios';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
@@ -46,7 +47,7 @@ const ProductList = () => {
       title="Products"
     >
       <Container maxWidth={false}>
-        {/* <Toolbar /> */}
+     <Toolbar/>
         <Box mt={3}>
           <Grid
             container
@@ -80,6 +81,7 @@ const ProductList = () => {
           />
         </Box>
       </Container>
+      <Test/>
     </Page>
   );
 };
