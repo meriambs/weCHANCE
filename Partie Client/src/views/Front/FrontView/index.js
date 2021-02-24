@@ -3,6 +3,7 @@ import React from 'react';
 import Page from 'src/components/Page';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import style from './style.css';
+import FontPage from './FontPage';
 import Button from "@material-ui/core/Button";
 
 
@@ -52,6 +53,7 @@ const welcome = () => {
         <h5>Expert Candidates</h5>
       </div>
     </section>
+    <FontPage/>
     </Page>
   );
 };
