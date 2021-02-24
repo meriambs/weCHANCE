@@ -19,17 +19,16 @@ const useStyles = makeStyles((theme) => ({
 
 const CandidatesListView = () => {
   const classes = useStyles();
-  const [customers] = useState(data);
-
+console.log('heloooowa')
   return (
     <Page
       className={classes.root}
-      title="Customers"
+      title="Candidate List"
     >
       <Container maxWidth={false}>
       
         <Box mt={3}>
-           <Results customers={customers} /> 
+           <Results/> 
         </Box>
       </Container>
     </Page>

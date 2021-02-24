@@ -15,7 +15,7 @@ module.exports.readAll = async (req, res) => {
 }
 
 module.exports.readJobOfferApplications = async (req, res) => {
-    const { jobrOffeId } = req.params;
+    const { JoobId } = req.params;
     const applicationList = await ApplicationModel
         .find({ offer: JoobId})
         .populate(['video','attachments', 'user', 'photo', 'profile']);

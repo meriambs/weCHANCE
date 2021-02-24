@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -20,6 +20,9 @@ import {
 import getInitials from 'src/utils/getInitials';
 import CameraRollIcon from '@material-ui/icons/CameraRoll';
 import SaveIcon from '@material-ui/icons/Save';
+import axios from 'axios';
+import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
+import data from './data'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -28,8 +31,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Results = ({ className, customers, ...rest }) => {
+const Results = ({ className,data, ...rest }) => {
   const classes = useStyles();
+  const { id } = useParams() 
+  // partie get element
+  console.log('idddddd',id)
+  const [candidates,setCandidates] = useState([]);
+    useEffect(() => {
+      const fetchGetJobUser = async () =>{
+        const res = await axios.get(`http://localhost:3003/application/offer/${id}`);
+        setCandidates(res.data);
+        console.log('verificatin donee',res.data)
+      
+       }
+       fetchGetJobUser();
+     }, []);
+    //  end get element
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -38,7 +55,7 @@ const Results = ({ className, customers, ...rest }) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = customers.map((customer) => customer.id);
+      newSelectedCustomerIds = jobuser.map((customer) => customer.id);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -75,6 +92,7 @@ const Results = ({ className, customers, ...rest }) => {
   };
 
   return (
+    
     <Card
       className={clsx(classes.root, className)}
       {...rest}
@@ -84,17 +102,17 @@ const Results = ({ className, customers, ...rest }) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
+                {/* <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === customers.length}
+                    checked={selectedCustomerIds.length === candidates.length}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < customers.length
+                      && selectedCustomerIds.length < candidates.length
                     }
                     onChange={handleSelectAll}
                   />
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                   Name
                 </TableCell>
@@ -111,19 +129,19 @@ const Results = ({ className, customers, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers.slice(0, limit).map((customer) => (
+              {candidates.map((customer) => (
                 <TableRow
                   hover
                   key={customer.id}
                   selected={selectedCustomerIds.indexOf(customer.id) !== -1}
                 >
-                  <TableCell padding="checkbox">
+                  {/* <TableCell padding="checkbox">
                     <Checkbox
                       checked={selectedCustomerIds.indexOf(customer.id) !== -1}
                       onChange={(event) => handleSelectOne(event, customer.id)}
                       value="true"
                     />
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell>
                     <Box
                       alignItems="center"
@@ -131,7 +149,7 @@ const Results = ({ className, customers, ...rest }) => {
                     >
                       <Avatar
                         className={classes.avatar}
-                        src={customer.avatarUrl}
+                        src='/static/images/avatars/avatar_3.png'
                       >
                         {getInitials(customer.name)}
                       </Avatar>
@@ -139,12 +157,12 @@ const Results = ({ className, customers, ...rest }) => {
                         color="textPrimary"
                         variant="body1"
                       >
-                        {customer.name}
+                        {`${customer.user.name}  ${customer.user.lastName}`} 
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {customer.user.email}
                   </TableCell>
                  
                   <TableCell>
@@ -161,7 +179,7 @@ const Results = ({ className, customers, ...rest }) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={customers.length}
+        count={candidates.length}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handleLimitChange}
         page={page}
@@ -174,7 +192,7 @@ const Results = ({ className, customers, ...rest }) => {
 
 Results.propTypes = {
   className: PropTypes.string,
-  customers: PropTypes.array.isRequired
+  candidates: PropTypes.array.isRequired
 };
 
 export default Results;

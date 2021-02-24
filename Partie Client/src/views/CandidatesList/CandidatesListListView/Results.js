@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -29,9 +29,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const Results = ({ className, customers, ...rest }) => {
  const { id } = useParams() 
   const classes = useStyles();
+  // partie get element
+  console.log('idddddd',id)
+  // const [jobuser,setjobUser] = useState([]);
+  //   useEffect(() => {
+  //     const fetchGetJobUser = async () =>{
+  //       const res = await axios.get(`http://localhost:3003/application/offer/${id}`);
+  //       setjobUser(res.data);
+  //       console.log('verificatin donee',res.data)
+      
+  //      }
+  //      fetchGetJobUser();
+  //    }, []);
+    //  end get element
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);

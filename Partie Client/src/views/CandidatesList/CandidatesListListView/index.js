@@ -8,6 +8,8 @@ import Page from 'src/components/Page';
 import Results from './Results';
 import data from './data';
 
+import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -17,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const CandidatesListListView = () => {
   const classes = useStyles();
   const [customers] = useState(data);
@@ -24,13 +27,13 @@ const CandidatesListListView = () => {
   return (
     <Page
       className={classes.root}
-      title="Customers"
+      title="Candidate List"
     >
       <Container maxWidth={false}>
      
         <Box mt={3}>
        
-           <Results customers={customers} /> 
+           <Results  /> 
         </Box>
       </Container>
     </Page>

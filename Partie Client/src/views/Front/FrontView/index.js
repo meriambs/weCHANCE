@@ -53,6 +53,11 @@ const welcome = () => {
         <h5>Expert Candidates</h5>
       </div>
     </section>
+    <section className="enmpty">
+ <div className="empty-phase">
+ {/* ici l partie separant entre les partie sup et footer */}
+ </div>
+    </section>
     <FontPage/>
     </Page>
   );

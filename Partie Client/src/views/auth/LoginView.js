@@ -55,7 +55,7 @@ const LoginView = () => {
               const res = await axios.post('http://127.0.0.1:3003/auth', values);
               await localStorage.setItem('token', res.data.token);
               setTimeout(()=>{
-                navigate('/app/products', { replace: true })
+                navigate('/app/Job-offer', { replace: true })
               }, 500)
             }}
           >
