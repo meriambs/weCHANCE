@@ -23,15 +23,25 @@ import CameraRollIcon from '@material-ui/icons/CameraRoll';
 const useStyles = makeStyles(() => ({
   root: {}
 }));
-
+ 
 const ProfileDetails = ({ className, ...rest }) => {
   const {id}=useParams();
   const classes = useStyles();
   const user=useSelector((state =>state.user))
-  
+ 
  const [open, setOpen] = useState(false);
  const [video,setVideo] = useState(false);
  const [cv,setCv]=useState();
+ const [videoBinary, setVideoBinary] = useState();
+ const [isVideoRecorded, setIsVideoRecorded] = useState(false);
+ const [isVideoUploaded, setIsVideoUploaded] = useState(false);
+ const [recording, setRecording] = useState(false);
+ 
+ const onRecordingComplete = (blob) => {
+     setVideoBinary(blob)
+     setIsVideoRecorded(true)
+ }
+ 
     const handleClose = () => {
         setOpen(false)
     }
@@ -39,7 +49,7 @@ const ProfileDetails = ({ className, ...rest }) => {
         setCv(files[0]);
         setOpen(false)
         }
-
+ 
  
     const handleOpen = () => {
         setOpen(true)
@@ -47,16 +57,17 @@ const ProfileDetails = ({ className, ...rest }) => {
     const postuler= async()=>{
       let fd = new FormData();
       fd.append('fname', 'cv.name');
+      fd.append('video', videoBinary);
       fd.append('data', cv);
       fd.append('offer', id);
        const res = await axios.post(`http://localhost:3003/application/${user._id}`,fd, {
         headers: {
           'Content-Type': 'multipart'}});
     }
-
-    
-
-
+ 
+ 
+ 
+ 
   return (
     <form
       autoComplete="off"
@@ -122,9 +133,9 @@ const ProfileDetails = ({ className, ...rest }) => {
           </Grid>
         </CardContent>
         <Divider />
-
-    
-        
+ 
+ 
+ 
         <Box
           display="flex"
           justifyContent="flex-end"
@@ -151,23 +162,24 @@ const ProfileDetails = ({ className, ...rest }) => {
           >
             Postuler !
           </Button>
-          
+ 
         </Box>
       </Card>
       {cv &&
           <Typography >
               {cv.name}
-              
+ 
           </Typography>}
           {
-            video && <ReactRecorder/>
+            video && <ReactRecorder onRecordingComplete={onRecordingComplete}/>
           }
     </form>
   );
 };
-
+ 
 ProfileDetails.propTypes = {
   className: PropTypes.string
 };
-
+ 
 export default ProfileDetails;
+ 

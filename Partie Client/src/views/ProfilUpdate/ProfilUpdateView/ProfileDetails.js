@@ -10,8 +10,7 @@ import {
   Divider,
   Grid,
   TextField,
-  makeStyles,
-  Typography
+  makeStyles
 } from '@material-ui/core';
 import axios from 'axios';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -47,9 +46,9 @@ const navigate = useNavigate();
   //     setAccountType(value)
   // }
  const update =()=>{
-                            console.log('test direction');
+                            console.log('res', res);
 
-               navigate('/app/update-profil', { replace: true })
+               navigate('/app/profil', { replace: true })
               
  }
 
@@ -76,7 +75,7 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
+              <TextField
                 fullWidth
                 helperText="Please specify the first name"
                 label="First name"
@@ -92,7 +91,7 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
+              <TextField
                 fullWidth
                 label="Last name"
                 name="lastName"
@@ -107,7 +106,7 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
+              <TextField
                 fullWidth
                 label="Email Address"
                 name="email"
@@ -122,7 +121,7 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
+              <TextField
                 fullWidth
                 label="Phone Number"
                 name="phone"
@@ -137,7 +136,7 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
+              <TextField
                 fullWidth
                 label="Country"
                 name="country"
@@ -152,7 +151,7 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
+              <TextField
                 fullWidth
                 label="Select State"
                 name="state"
@@ -163,7 +162,7 @@ const navigate = useNavigate();
                 value={user.location}
                 variant="outlined"
               >
-              </Typography>
+              </TextField>
             </Grid>
           </Grid>
         </CardContent>
@@ -178,7 +177,7 @@ const navigate = useNavigate();
             variant="contained"
             onClick={update}
           >
-            Change some details
+            Save details
           </Button>
         </Box>
       </Card>

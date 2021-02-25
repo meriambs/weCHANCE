@@ -14,7 +14,7 @@ import JobCreateView from  'src/views/CreateJobOffer/JobCreateView';
 import GetJobView from 'src/views/GetJobOffer/GetJobView'
 import PostulerView from 'src/views/Postuler/PostulerView';
  import FrontView from  'src/views/Front/FrontView';
-
+import ProfilUpdateView from 'src/views/ProfilUpdate/ProfilUpdateView'
 const routes = [
   {
     
@@ -28,7 +28,7 @@ const routes = [
       { path: 'creatJobOffer', element: <JobCreateView /> },
        //{ path: 'Welcome', element: <FrontView /> },
       { path: 'Candidates/:id', element: <CandidatesListView /> },
-      // { path: 'dashboard', element: <DashboardView /> },
+       { path: 'update-profil', element: <ProfilUpdateView /> },
       { path: 'Job-offer', element: <ProductListView /> },
       { path: 'postuler/:id', element: <PostulerView /> },
       { path: 'JobOffer/:id', element: <GetJobView /> },

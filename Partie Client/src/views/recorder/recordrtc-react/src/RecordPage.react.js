@@ -24,6 +24,7 @@ export default function Camera(props) {
   const [camCount, setCamCount] = useState(1);
   const { onRecordingComplete } = props;
   const [canPlay, setCanPlay] = useState(true);
+  //l'ouverture dde la cam 
   const openCam = async (index) => {
     setCamIndex(index);
     const devices = await navigator.mediaDevices.enumerateDevices();
@@ -64,6 +65,7 @@ export default function Camera(props) {
   function handleCanPlay() {
     videoRef.current.play();
   }
+
   const MIME_TYPES = [
     'video/webm;codecs="vp8,opus"',
     'video/webm;codecs=h264',
@@ -87,7 +89,8 @@ export default function Camera(props) {
         type: getMimeType()
       })
     
-    onRecordingComplete(videoBlob);
+
+    props.onRecordingComplete(videoBlob);
     setVideoRecorded(true);
     setPlayableVideo(URL.createObjectURL(videoBlob));
     if(mediaRecorder.state === 'recording') {

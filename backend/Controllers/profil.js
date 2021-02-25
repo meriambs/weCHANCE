@@ -27,31 +27,6 @@ const upDatedProfil  =  async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
-    const {
-      githubusername,
-     
-     
-     
-    } = req.body;
-
-    // //Build profile object
-     const profileFields = {};
-     profileFields.user = req.user.id;
-    //  if (company) profileFields.company = company;
-    //  if (website) profileFields.website = website;
-     if (location) profileFields.location = location;
-    //  if (bio) profileFields.bio = bio;
-    //  if (status) profileFields.status = status;
-     if (githubusername) profileFields.githubusername = githubusername;
-    //  if (skills) {
-    //   profileFields.skills = skills.split(",").map((skill) => {
-    //      return skill.trim();
-    //    });
-       
-    //  }
-
-    
      try {
        let profile = await Profile.findOne({ user: req.user.id });
 
@@ -66,7 +41,6 @@ const upDatedProfil  =  async (req, res) => {
         return res.json(profile);
       }
 
-      //Create if there is no profile
        profile = new Profile(profileFields);
        await profile.save();
        res.json(profile);
@@ -79,6 +53,28 @@ const upDatedProfil  =  async (req, res) => {
   
   
   };
+// const {
+    //   githubusername,
+     
+     
+     
+    // } = req.body;
+
+    // // //Build profile object
+    //  const profileFields = {};
+    //  profileFields.user = req.user.id;
+    // //  if (company) profileFields.company = company;
+    // //  if (website) profileFields.website = website;
+    //  if (location) profileFields.location = location;
+    // //  if (bio) profileFields.bio = bio;
+    // //  if (status) profileFields.status = status;
+    //  if (githubusername) profileFields.githubusername = githubusername;
+    //  if (skills) {
+    //   profileFields.skills = skills.split(",").map((skill) => {
+    //      return skill.trim();
+    //    });
+       
+    //  }
 
 
 const getAllProfil = async (req, res) => {
