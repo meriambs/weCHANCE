@@ -15,7 +15,6 @@ import GetJobView from 'src/views/GetJobOffer/GetJobView'
 import PostulerView from 'src/views/Postuler/PostulerView';
  import FrontView from  'src/views/Front/FrontView';
 
-
 const routes = [
   {
     
@@ -30,33 +29,33 @@ const routes = [
        //{ path: 'Welcome', element: <FrontView /> },
       { path: 'Candidates/:id', element: <CandidatesListView /> },
       // { path: 'dashboard', element: <DashboardView /> },
-      // { path: 'Job-offer', element: <ProductListView /> },
+      { path: 'Job-offer', element: <ProductListView /> },
       { path: 'postuler/:id', element: <PostulerView /> },
       { path: 'JobOffer/:id', element: <GetJobView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
-   {
+  //  {
     
-    path: 'app',
-    
-    // element: <DashboardLayout />,
-    children: [
-      // { path: 'account', element: <AccountView /> },
+  //   path: 'app',
+  //   element:<TopBar/>,
+  //   // element: <DashboardLayout />,
+  //   children: [
+  //     // { path: 'account', element: <AccountView /> },
        
-      // // { path: 'CandidatesList', element: <CandidatesListListView /> },
-      // { path: 'creatJobOffer', element: <JobCreateView /> },
-      //  //{ path: 'Welcome', element: <FrontView /> },
-      // { path: 'Candidates', element: <CandidatesListView /> },
-      // // { path: 'dashboard', element: <DashboardView /> },
-      { path: 'Job-offer', element: <ProductListView /> },
-      // { path: 'postuler/:id', element: <PostulerView /> },
-      // { path: 'JobOffer/:id', element: <GetJobView /> },
-      // { path: 'settings', element: <SettingsView /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
-  },
+  //     // // { path: 'CandidatesList', element: <CandidatesListListView /> },
+  //     // { path: 'creatJobOffer', element: <JobCreateView /> },
+  //     //  //{ path: 'Welcome', element: <FrontView /> },
+  //     // { path: 'Candidates', element: <CandidatesListView /> },
+  //     // // { path: 'dashboard', element: <DashboardView /> },
+  //     { path: 'Job-offer', element: <ProductListView /> },
+  //     // { path: 'postuler/:id', element: <PostulerView /> },
+  //     // { path: 'JobOffer/:id', element: <GetJobView /> },
+  //     // { path: 'settings', element: <SettingsView /> },
+  //     { path: '*', element: <Navigate to="/404" /> }
+  //   ]
+  // },
   
   {
     path: '/',

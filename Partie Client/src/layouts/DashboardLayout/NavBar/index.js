@@ -58,7 +58,7 @@ const items = [
   {
     href: '/app/account',
     icon: UserIcon,
-    title: 'Candidates'
+    title: 'Profil'
  
   },
   {
