@@ -38,11 +38,11 @@ const FontPage = () => {
   	 			</ul>
   	 		</div>
          <div className="footer-col">
-  	 			<h4>Get help Candidate</h4>
+  	 			<h4>Contact Us</h4>
   	 			<ul>
   	 				<li><a href="#"><AddIcCallIcon/>+216 71 896 745</a></li>
   	 				<li><a href="#"><AlternateEmailIcon/>societe@societe.com</a></li>
-  	 				<li><a href="#"><BusinessIcon/>San Francisco, California, USA </a></li>
+  	 				<li><a href="#"><BusinessIcon/>Tunis, Tunis </a></li>
   	 				
   	 			</ul>
   	 		</div>

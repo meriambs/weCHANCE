@@ -4,8 +4,9 @@ import Page from 'src/components/Page';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import style from './style.css';
 import FontPage from './FontPage';
+import Categori from './Categori';
+import Testimoni from './Testimoni'
 import Button from "@material-ui/core/Button";
-
 
 const welcome = () => {
    const navigate = useNavigate();
@@ -53,12 +54,18 @@ const welcome = () => {
         <h5>Expert Candidates</h5>
       </div>
     </section>
-    <section className="enmpty">
- <div className="empty-phase">
- {/* ici l partie separant entre les partie sup et footer */}
- </div>
+
+    <section className="categori-part">
+      <Categori/>
     </section>
-    <FontPage/>
+   <div className="testimoni-part">
+     <Testimoni/>
+   </div>
+    <section className="footer-part">
+       <FontPage/>
+    </section>
+   
+    
     </Page>
   );
 };
