@@ -14,14 +14,16 @@ import {
   makeStyles
 } from '@material-ui/core';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-  timezone: 'GTM-7'
-};
+import  {useSelector} from 'react-redux';
+
+// const user = {
+//   avatar: '/static/images/avatars/avatar_6.png',
+//   city: 'Los Angeles',
+//   country: 'USA',
+//   jobTitle: 'Senior Developer',
+//   name: 'Katarina Smith',
+//   timezone: 'GTM-7'
+// };
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -34,6 +36,7 @@ const useStyles = makeStyles(() => ({
 const Profile = ({ className, ...rest }) => {
   const classes = useStyles();
 
+  const user=useSelector((state =>state.user))
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -56,18 +59,18 @@ const Profile = ({ className, ...rest }) => {
           >
             {user.name}
           </Typography>
-          <Typography
+          {/* <Typography
             color="textSecondary"
             variant="body1"
           >
             {`${user.city} ${user.country}`}
-          </Typography>
+          </Typography> */}
           <Typography
             className={classes.dateText}
             color="textSecondary"
             variant="body1"
           >
-            {`${moment().format('hh:mm A')} ${user.timezone}`}
+            {`${moment().format('hh:mm A')} `}
           </Typography>
         </Box>
       </CardContent>
@@ -78,7 +81,7 @@ const Profile = ({ className, ...rest }) => {
           fullWidth
           variant="text"
         >
-          Upload picture
+          {/* Upload picture */}
         </Button>
       </CardActions>
     </Card>

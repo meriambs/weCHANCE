@@ -16,8 +16,8 @@ router.post(
   "/",
   [
     auth,
-   [ body("status", "status is required").not().isEmpty(),
-    body("skills", "Skills is required").not().isEmpty()],
+   [ body("name", "name is required").not().isEmpty(),
+    body("email", "email is required").not().isEmpty()],
   ],upDatedProfil);
 
  // @route    Get  api/profile/

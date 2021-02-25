@@ -1,32 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+// partie add 
+import * as Yup from 'yup';
+import { Formik  } from 'formik';
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardHeader,
+  Container,
   Divider,
   Grid,
   TextField,
   makeStyles
 } from '@material-ui/core';
+import axios from 'axios';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
-const states = [
-  {
-    value: 'alabama',
-    label: 'Alabama'
-  },
-  {
-    value: 'new-york',
-    label: 'New York'
-  },
-  {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  }
-];
+import Page from 'src/components/Page';
+// import  {useSelector} from 'react-redux';
+
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -34,29 +29,71 @@ const useStyles = makeStyles(() => ({
 
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
-  });
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    });
-  };
+  // const user=useSelector((state =>state.user))
+  
+
+const navigate = useNavigate();
+
+  //  const handleChange = (e, value) => {
+  //     setAccountType(value)
+  // }
+// const update = async()=>{
+// const res = await axios.post('http://127.0.0.1:3003/profil',{...values,})
+//                             console.log('res', res);
+
+//               navigate('/app/profil', { replace: true })
+              
+// }
 
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      className={clsx(classes.root, className)}
-      {...rest}
+    
+ <Page
+      className={classes.root}
+      title="Register"
     >
+    <Container maxWidth="sm">
+          <Formik
+            initialValues={{
+              email: '',
+              name: '',
+              lastName: '',
+              password: '',
+            }}
+            validationSchema={
+              Yup.object().shape({
+                email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+                name: Yup.string().max(255).required('First name is required'),
+                lastName: Yup.string().max(255).required('Last name is required'),
+                password: Yup.string().max(255).required('password is required'),
+                // isRecruiter: Yup.boolean().oneOf([true], 'This field must be checked')
+              })
+            }
+//             const update = async()=>{
+// const res = await axios.post('http://127.0.0.1:3003/profil',{...values,})
+//                             console.log('res', res);
+
+//               navigate('/app/profil', { replace: true })
+              
+// }
+            onSubmit={async(values) => {
+              
+              const res = await axios.post('http://127.0.0.1:3003/profil',{...values})
+                             console.log('resgggggg', res);
+
+               navigate('/Welcome', { replace: true })
+              
+            }}
+          >
+            {({
+              errors,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+              touched,
+              values
+            }) => (<form onSubmit={handleSubmit}>
       <Card>
         <CardHeader
           subheader="The information can be edited"
@@ -74,14 +111,16 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
-                onChange={handleChange}
-                required
-                value={values.firstName}
-                variant="outlined"
+                error={Boolean(touched.name && errors.name)}
+                  fullWidth
+                  helperText={touched.name && errors.name}
+                  label="name"
+                  margin="normal"
+                  name="name"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.name}
+                  variant="outlined"
               />
             </Grid>
             <Grid
@@ -90,13 +129,16 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Last name"
-                name="lastName"
-                onChange={handleChange}
-                required
-                value={values.lastName}
-                variant="outlined"
+                error={Boolean(touched.lastName && errors.lastName)}
+                  fullWidth
+                  helperText={touched.lastName && errors.lastName}
+                  label="Last name"
+                  margin="normal"
+                  name="lastName"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.lastName}
+                  variant="outlined"
               />
             </Grid>
             <Grid
@@ -105,71 +147,78 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
-                onChange={handleChange}
-                required
-                value={values.email}
-                variant="outlined"
+                error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  helperText={touched.email && errors.email}
+                  label="Email Address"
+                  margin="normal"
+                  name="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="email"
+                  value={values.email}
+                  variant="outlined"
               />
             </Grid>
-            <Grid
+            {/* <Grid
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
+                error={Boolean(touched.PhoneNumber && errors.PhoneNumber)}
+                  fullWidth
+                  helperText={touched.PhoneNumber && errors.PhoneNumber}
+                  label="PhoneNumber"
+                  margin="normal"
+                  name="PhoneNumber"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="PhoneNumber"
+                  value={values.PhoneNumber}
+                  variant="outlined"
               />
-            </Grid>
-            <Grid
+            </Grid> */}
+            {/* <Grid
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
+               error={Boolean(touched.githubusername && errors.githubusername)}
+                  fullWidth
+                  helperText={touched.githubusername && errors.githubusername}
+                  label="githubusername"
+                  margin="normal"
+                  name="githubusername"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="githubusername"
+                  value={values.githubusername}
+                  variant="outlined"
+               
               />
-            </Grid>
-            <Grid
+            </Grid> */}
+            {/* <Grid
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Select State"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
+                error={Boolean(touched.location && errors.location)}
+                  fullWidth
+                  helperText={touched.location && errors.location}
+                  label="location"
+                  margin="normal"
+                  name="location"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="location"
+                  value={values.location}
+                  variant="outlined"
               >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
               </TextField>
-            </Grid>
+            </Grid> */}
           </Grid>
         </CardContent>
         <Divider />
@@ -179,19 +228,27 @@ const ProfileDetails = ({ className, ...rest }) => {
           p={2}
         >
           <Button
-            color="primary"
-            variant="contained"
+           color="primary"
+                    disabled={isSubmitting}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained"
           >
             Save details
           </Button>
         </Box>
       </Card>
     </form>
+            )}
+    </Formik>
+    </Container>
+    </Page>
   );
 };
 
-ProfileDetails.propTypes = {
-  className: PropTypes.string
-};
+ ProfileDetails.propTypes = {
+   className: PropTypes.string
+ };
 
 export default ProfileDetails;
