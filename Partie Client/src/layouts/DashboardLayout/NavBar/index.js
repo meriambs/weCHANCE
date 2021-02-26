@@ -40,15 +40,9 @@ const items = [
     href: '/app/creatJobOffer',
     icon: BarChartIcon,
     title: 'AddJob',
-    //  isRecruiter:true
+      isRecruiter:true
     
-  },
-  //  {
-  //    href: '/app/CandidatesList',
-  //    icon: UsersIcon,
-  //    title: 'Candidates',
-  //    isRecruiter:true
-  //  },
+  }, 
   {
     href: '/app/Job-offer',
     icon: ShoppingBagIcon,
