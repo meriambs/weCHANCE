@@ -66,7 +66,7 @@ const ProfileDetails = () => {
               const res = await axios.post('http://127.0.0.1:3003/post',{...values})
                             console.log('res', res);
 
-              navigate('/app/products', { replace: true })
+              navigate('/app/Job-offer', { replace: true })
               
             }}
           >

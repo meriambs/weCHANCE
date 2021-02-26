@@ -9,7 +9,7 @@ import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
-import Test from './Test';
+// import Test from './Test';
 import axios from 'axios';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
@@ -81,7 +81,7 @@ const ProductList = () => {
           />
         </Box>
       </Container>
-      <Test/>
+      {/* <Test/> */}
     </Page>
   );
 };

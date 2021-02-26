@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const ProfileDetails = ({ className, ...rest }) => {
+const UpdateProfil = ({ className, ...rest }) => {
   const classes = useStyles();
 
   // const user=useSelector((state =>state.user))
@@ -251,4 +251,4 @@ const navigate = useNavigate();
 //    className: PropTypes.string
 //  };
 
-export default ProfileDetails;
+export default UpdateProfil;

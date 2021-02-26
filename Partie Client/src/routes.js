@@ -4,7 +4,7 @@ import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import CandidatesListView from 'src/views/customer/CandidatesListView';
-// import DashboardView from 'src/views/reports/DashboardView';
+ //import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/JobOffer/ProductListView';
@@ -14,6 +14,7 @@ import JobCreateView from  'src/views/CreateJobOffer/JobCreateView';
 import GetJobView from 'src/views/GetJobOffer/GetJobView'
 import PostulerView from 'src/views/Postuler/PostulerView';
  import FrontView from  'src/views/Front/FrontView';
+ import AcceuilView from 'src/views/Acceuil/AcceuilView';
 import ProfilUpdateView from 'src/views/ProfilUpdate/ProfilUpdateView'
 const routes = [
   {
@@ -23,7 +24,7 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <AccountView /> },
-       
+       {path: 'Acceuil' ,element:<AcceuilView/>},
       // { path: 'CandidatesList', element: <CandidatesListListView /> },
       { path: 'creatJobOffer', element: <JobCreateView /> },
        //{ path: 'Welcome', element: <FrontView /> },

@@ -1,36 +1,28 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+// partie add 
+import * as Yup from 'yup';
+import { Formik  } from 'formik';
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardHeader,
+  Container,
   Divider,
   Grid,
   TextField,
-  makeStyles,
-  Typography
+  Typography,
+  makeStyles
 } from '@material-ui/core';
 import axios from 'axios';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
-import  {useSelector} from 'react-redux';
-// const states = [
-//   {
-//     value: 'alabama',
-//     label: 'Alabama'
-//   },
-//   {
-//     value: 'new-york',
-//     label: 'New York'
-//   },
-//   {
-//     value: 'san-francisco',
-//     label: 'San Francisco'
-//   }
-// ];
+import Page from 'src/components/Page';
+ import  {useSelector} from 'react-redux';
+
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -39,14 +31,15 @@ const useStyles = makeStyles(() => ({
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
 
-  const user=useSelector((state =>state.user))
+ const user=useSelector((state =>state.user))
   
 
 const navigate = useNavigate();
+
   //  const handleChange = (e, value) => {
-  //     setAccountType(value)
-  // }
- const update =()=>{
+      //  setAccountType(value)
+  //  }
+ const updated  =()=>{
                             console.log('test direction');
 
                navigate('/app/update-profil', { replace: true })
@@ -54,12 +47,14 @@ const navigate = useNavigate();
  }
 
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      className={clsx(classes.root, className)}
-      {...rest}
+    
+ <Page
+      className={classes.root}
+      title="Register"
     >
+    <Container maxWidth="sm">
+          
+              <form>
       <Card>
         <CardHeader
           subheader="The information can be edited"
@@ -76,15 +71,17 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
-                // onChange={handleChange}
-                required
-                value={user.name}
-                variant="outlined"
+              <TextField
+                // error={Boolean(touched.name && errors.name)}
+                  fullWidth
+                  // helperText={touched.name && errors.name}
+                  label="name"
+                  margin="normal"
+                  name="name"
+                  // onBlur={handleBlur}
+                  // onChange={handleChange}
+                  value={user.name}
+                  variant="outlined"
               />
             </Grid>
             <Grid
@@ -92,14 +89,17 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
-                fullWidth
-                label="Last name"
-                name="lastName"
-                // onChange={handleChange}
-                required
-                value={user.lastName}
-                variant="outlined"
+              <TextField
+                // error={Boolean(touched.lastName && errors.lastName)}
+                  fullWidth
+                  // helperText={touched.lastName && errors.lastName}
+                  label="Last name"
+                  margin="normal"
+                  name="lastName"
+                  // onBlur={handleBlur}
+                  // onChange={handleChange}
+                  value={user.lastName}
+                  variant="outlined"
               />
             </Grid>
             <Grid
@@ -107,64 +107,21 @@ const navigate = useNavigate();
               md={6}
               xs={12}
             >
-              <Typography
-                fullWidth
-                label="Email Address"
-                name="email"
-                // onChange={handleChange}
-                required
-                value={user.email}
-                variant="outlined"
+              <TextField
+                // error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  // helperText={touched.email && errors.email}
+                  label="Email Address"
+                  margin="normal"
+                  name="email"
+                  // onBlur={handleBlur}
+                  // onChange={handleChange}
+                  type="email"
+                  value={user.email}
+                  variant="outlined"
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <Typography
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                // onChange={handleChange}
-                type="number"
-                value={user.PhoneNumber}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <Typography
-                fullWidth
-                label="Country"
-                name="country"
-                // onChange={handleChange}
-                required
-                value={user.githubusername}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <Typography
-                fullWidth
-                label="Select State"
-                name="state"
-                // onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={user.location}
-                variant="outlined"
-              >
-              </Typography>
-            </Grid>
+            
           </Grid>
         </CardContent>
         <Divider />
@@ -174,20 +131,30 @@ const navigate = useNavigate();
           p={2}
         >
           <Button
-            color="primary"
-            variant="contained"
-            onClick={update}
+           color="primary"
+                    onClick={updated}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained"
           >
             Change some details
           </Button>
         </Box>
       </Card>
     </form>
+            
+    </Container>
+    </Page>
   );
 };
 
- ProfileDetails.propTypes = {
-   className: PropTypes.string
- };
+//  ProfileDetails.propTypes = {
+//    className: PropTypes.string
+//  };
 
 export default ProfileDetails;
+
+
+
+// 
