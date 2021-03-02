@@ -14,7 +14,8 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-
+import { setuser } from "../../../redux/action";
+import { useDispatch } from "react-redux";
 import  {useSelector} from 'react-redux';
 
 // const user = {
@@ -35,10 +36,12 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Profile = ({ className, ...rest }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const user=useSelector((state =>state.user));
    const [formData, setFormData] = useState('');
+  
   const [info, setInfo] = useState({
     image: '',
     name: '',
@@ -53,55 +56,29 @@ const Profile = ({ className, ...rest }) => {
   // Upload image
   const upload = ({ target: { files } }) => {
     let data = new FormData();
-    data.append('categoryImage', files[0]);
+    data.append('data', files[0]);
     data.append('name', files[0].name);
     setFormData(data);
   };
 
   // Submit Form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setInfo({
-      image: '',
-      name: '',
-    });
-    setProgressPercent(0);
-     const token = localStorage.getItem('token');
+   const token = localStorage.getItem('token');
     const options = {
      
- headers: {"x-auth-token": token},
-      onUploadProgress: (progressEvent) => {
-        const { loaded, total } = progressEvent;
-        let percent = Math.floor((loaded * 100) / total);
-        console.log(`${loaded}kb of ${total}kb | ${percent}%`);
-        setProgressPercent(percent);
-      },
-    };
-    axios
-      .post('http://localhost:3003/api/category', formData, options)
-      .then((res) => {
-        console.log(res.data);
-        setTimeout(() => {
-          setInfo(res.data.category);
-          setProgressPercent(0);
-        }, 1000);
-      })
-      .catch((err) => {
-        console.log(err.response);
-        setError({
-          found: true,
-          message: err.response.data.errors,
-        });
-        setTimeout(() => {
-          setError({
-            found: false,
-            message: '',
-          });
-          setProgressPercent(0);
-        }, 3000);
-      });
+ headers: {"x-auth-token": token ,'Content-Type': 'multipart'},
     
-  };
+    };
+    
+       const res = await axios.post(`http://localhost:3003/users/photo`,formData,options);
+       const dis = await axios.get('http://localhost:3003/users', {
+        headers: {"x-auth-token": token}
+    }
+    )
+    dispatch(setuser(dis.data[0]));
+      }
+
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -140,15 +117,15 @@ const Profile = ({ className, ...rest }) => {
         </Box>
       </CardContent>
       <Divider /> */}
-      <CardActions>
+      {/* <CardActions>
         {/* <Button
           color="primary"
           fullWidth
           variant="text"
         > */}
           {/* Upload picture */}
-        {/* </Button> */}
-      </CardActions>
+        {/* </Button> 
+      </CardActions> */}
          <div
       // style={{ width: '100vw', height: '100vh' }}
       // className='d-flex justify-content-center align-items-center flex-column'

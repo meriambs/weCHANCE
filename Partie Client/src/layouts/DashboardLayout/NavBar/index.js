@@ -133,7 +133,7 @@ let jobTitle="" ;
        <Avatar
           className={classes.avatar}
           component={RouterLink}
-          src='/static/images/avatars/avatar_6.png'
+          src={`http://localhost:3003/${user.photo}`}
           to="/app/account"
         />
         <Typography

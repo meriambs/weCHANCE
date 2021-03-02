@@ -5,6 +5,7 @@ const User = require('../Models/User');
 module.exports.saveMedia = async function(req, res) {
     const { user} = req.params;
     const { name, type } = req.files.data;
+    
     const SavedMedia = await Media
     .create({
         name,

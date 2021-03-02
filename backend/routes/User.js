@@ -1,14 +1,17 @@
 var express = require('express');
 var router = express.Router();
 const auth = require('../middleware/auth')
-const { findUsers,createUser,findandUpdate,deleteUser} = require('../Controllers/user');
+const { findUsers,createUser,findandUpdate,deleteUser,uploadPhoto} = require('../Controllers/user');
 // ...rest of the initial code omitted for simplicity.
 const { body, validationResult } = require('express-validator');
+const multipart = require('connect-multiparty')
+//ramasser les fichiers 
+const multipartMiddleware = multipart()
 
 /* GET users listing. */
  router.get('/', auth,findUsers);
 // router.get('/:id', findUsers);
-
+router.post('/photo',auth,multipartMiddleware,uploadPhoto);
 /* POST users listing. */
 
 router.post(

@@ -147,7 +147,7 @@ const Results = ({ className, customers, ...rest }) => {
                     >
                       <Avatar
                         className={classes.avatar}
-                        src={customer.avatarUrl}
+                        src={`http://localhost:3003/${customer.photo}`}
                       >
                         {getInitials(customer.name)}
                       </Avatar>

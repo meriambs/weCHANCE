@@ -5,6 +5,31 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require("config");
 
+// /partie imagea:
+ const mv = require('mv')
+const Media = require('../Models/Media');
+// const User = require('../Models/User');
+const  uuid  = require('uuid').v4;
+
+  const uploadPhoto =  function(req, res) {
+    const { user} = req.params;
+    const { name, type } = req.files.data;
+    const id = uuid();
+    
+    // const SavedMedia = await Media
+    // .create({
+    //     name,
+    //     extension: type,
+    //     type: 'profile',
+    //     user,
+    // });
+    mv(req.files.data.path, `uploads/${id}${name}`, {mkdirp: true},async function(r) {
+
+ const updatedPerson = await User.findOneAndUpdate({_id:req.user.user.id},{photo:`${id}${name}`},{new:true})
+ return res.send(updatedPerson)
+        // res.send(`upload successful ${name}`)
+    })
+  }
 
 //@route    POST  api/users
 //@desc     Register User
@@ -96,9 +121,11 @@ const findUsers= async(req,res)=>{
  }
 
 
+
 module.exports = {
     findUsers,
  createUser,
     findandUpdate,
-    deleteUser
+    deleteUser,
+    uploadPhoto
 }

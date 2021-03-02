@@ -30,7 +30,7 @@ const personRouter = require ('./routes/User')
 
 // app.use(express.static('./public'));
 // app.use('/uploads', express.static('uploads'));
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 //import routes
 app.use(cors());
 app.use(express.json());
@@ -43,7 +43,7 @@ app.get('/', (req,res)=>{
 }); 
 //**********/ connect
 //partie image :
-app.use('/api', require('./routes/category.route'));
+// app.use('/api', require('./routes/category.route'));
 
 //*********Install and setup mongoose::
 // dotenv.config({path:__dirname + '/config/.env'});
