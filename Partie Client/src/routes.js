@@ -15,7 +15,8 @@ import GetJobView from 'src/views/GetJobOffer/GetJobView'
 import PostulerView from 'src/views/Postuler/PostulerView';
  import FrontView from  'src/views/Front/FrontView';
  import AcceuilView from 'src/views/Acceuil/AcceuilView';
-import ProfilUpdateView from 'src/views/ProfilUpdate/ProfilUpdateView'
+import ProfilUpdateView from 'src/views/ProfilUpdate/ProfilUpdateView';
+import PhotoUpdtedView from 'src/views/PhotoUpdted/PhotoUpdtedView'
 const routes = [
   {
     
@@ -25,6 +26,7 @@ const routes = [
     children: [
       { path: 'account', element: <AccountView /> },
        {path: 'Acceuil' ,element:<AcceuilView/>},
+       {path:'Photo',element:<PhotoUpdtedView/>},
       // { path: 'CandidatesList', element: <CandidatesListListView /> },
       { path: 'creatJobOffer', element: <JobCreateView /> },
        //{ path: 'Welcome', element: <FrontView /> },

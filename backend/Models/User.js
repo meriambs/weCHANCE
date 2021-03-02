@@ -19,10 +19,12 @@ let UserSchema = new mongoose.Schema({
     type:String,
     required:true
   },
-  
     isRecruiter: {
      type: Boolean,
      required: true
+   },
+   photo:{
+     type:String,
    }
 });
 

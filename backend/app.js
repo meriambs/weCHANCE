@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const dotenv = require('dotenv');
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'uploads/')))
@@ -11,7 +12,8 @@ const cors = require('cors');
 connectDB();
 
 
-
+app.use(express.static('./public'));
+app.use('/uploads', express.static('uploads'));
 //ici les rest des routes : 
 
 const personRouter = require ('./routes/User')
@@ -24,6 +26,11 @@ const personRouter = require ('./routes/User')
  const mediaRoutes = require('./routes/Media');
 
 //middelwar thing to execute things while we enter an other page 
+//partie image :
+
+// app.use(express.static('./public'));
+// app.use('/uploads', express.static('uploads'));
+app.use(morgan('dev'));
 //import routes
 app.use(cors());
 app.use(express.json());
@@ -35,7 +42,8 @@ app.get('/', (req,res)=>{
     res.send('heyyy test home ')
 }); 
 //**********/ connect
-
+//partie image :
+app.use('/api', require('./routes/category.route'));
 
 //*********Install and setup mongoose::
 // dotenv.config({path:__dirname + '/config/.env'});
