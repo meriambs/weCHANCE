@@ -104,7 +104,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 //indication du post 
 let jobTitle="" ;
  if(user.isRecruiter == true){
-          jobTitle= 'Recuted'
+          jobTitle= 'Recruiter'
         }else {
           jobTitle = 'Candidate'
         }

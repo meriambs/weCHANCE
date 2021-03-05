@@ -30,7 +30,7 @@ const welcome = () => {
       <img src="/static/images/welcome.png"/>
       </container>
       <div className="textpart">
-      <h4>We Have <CountUp  end={20000} duration={10} /> great job offers <span>YOU</span> deserve !</h4>
+      <h4>We Have <CountUp  end={20000} duration={10} style={{color:'red'}}/> great job offers <span>YOU</span> deserve !</h4>
         <h1>Largest Job Site In The World</h1>
         <h3>Let's Join Our <span>Community</span> </h3>
       </div>

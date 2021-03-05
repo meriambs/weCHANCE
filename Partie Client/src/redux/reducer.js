@@ -4,7 +4,7 @@ const initialState = {
     user:{
    name: 'duda',
     lastName: 'dudo',
-    email: 'duda@gmail.com'
+    email: 'duda-1258**'
     },
 offer:{
      SocieteName: 'zara',

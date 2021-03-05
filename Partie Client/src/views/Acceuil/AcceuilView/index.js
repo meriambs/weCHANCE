@@ -17,6 +17,8 @@ import Avatar from '@material-ui/core/Avatar';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import Pagination from '@material-ui/lab/Pagination';
 
+import  {useSelector} from 'react-redux';
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#fff"
@@ -67,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Account() {
   const classes = useStyles();
+ const user=useSelector((state =>state.user))
 
   return (
     <Page>

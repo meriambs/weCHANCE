@@ -25,6 +25,19 @@ let UserSchema = new mongoose.Schema({
    },
    photo:{
     type: String,
+   },
+   adress:{
+     type:String,
+     
+   },
+   githubLink:{
+     type:String
+   },
+   linkedin:{
+     type:String
+   },
+   phoneNumber:{
+     type:String
    }
 });
 

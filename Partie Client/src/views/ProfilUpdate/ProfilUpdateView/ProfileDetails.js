@@ -1,12 +1,17 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import Page from 'src/components/Page';
+// partie add 
+import * as Yup from 'yup';
+import { Formik  } from 'formik';
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardHeader,
+  Container,
   Divider,
   Grid,
   TextField,
@@ -14,22 +19,10 @@ import {
 } from '@material-ui/core';
 import axios from 'axios';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 import  {useSelector} from 'react-redux';
-// const states = [
-//   {
-//     value: 'alabama',
-//     label: 'Alabama'
-//   },
-//   {
-//     value: 'new-york',
-//     label: 'New York'
-//   },
-//   {
-//     value: 'san-francisco',
-//     label: 'San Francisco'
-//   }
-// ];
+
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -37,36 +30,65 @@ const useStyles = makeStyles(() => ({
 
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
-
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const user=useSelector((state =>state.user))
-  
+  console.log('user',user)
 
 const navigate = useNavigate();
-  //  const handleChange = (e, value) => {
-  //     setAccountType(value)
-  // }
- const update =()=>{
-                            console.log('res', res);
+ 
 
-               navigate('/app/profil', { replace: true })
-              
- }
 
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      className={clsx(classes.root, className)}
-      {...rest}
+    
+     <Page
+      className={classes.root}
+      title="Register"
     >
+    <Container maxWidth="sm">
+    {user.email !== 'duda-1258**' &&
+          <Formik
+            initialValues={{
+              email: user.email,
+              name: user.name,
+              lastName: user.lastName,
+              phoneNumber:user.phoneNumber,                 
+             adress:user.adress,
+               githubLink:user.githubLink,
+            linkedin :user.linkedin,
+            }}
+            validationSchema={
+              Yup.object().shape({
+                email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+                name: Yup.string().max(255).required('First name is required'),
+                lastName: Yup.string().max(255).required('Last name is required'),
+                phoneNumber:Yup.string().max(255).required('Phone number   is required'),
+              })
+            }
+            onSubmit={async (values)=>{
+               const res = await axios.put(`http://localhost:3003/users/${user._id}`, values)
+               enqueueSnackbar('Profile updated', {variant:'success'});
+              console.log('testy')
+              }
+            }
+   
+          >
+            {({
+              errors,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+              touched,
+              values
+            }) => (<form onSubmit={handleSubmit}>
       <Card>
         <CardHeader
           subheader="The information can be edited"
-          title="Profile"
+          title="Profile Update"
         />
         <Divider />
         <CardContent>
-          <Grid
+           <Grid
             container
             spacing={3}
           >
@@ -76,14 +98,34 @@ const navigate = useNavigate();
               xs={12}
             >
               <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
-                // onChange={handleChange}
-                required
-                value={user.name}
-                variant="outlined"
+                error={Boolean(touched.name && errors.name)}
+                  fullWidth
+                  helperText={touched.name && errors.name}
+                  label="name"
+                  margin="normal"
+                  name="name"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.name}
+                  variant="outlined"
+              />
+            </Grid> 
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                error={Boolean(touched.lastName && errors.lastName)}
+                  fullWidth
+                  helperText={touched.lastName && errors.lastName}
+                  label="Last name"
+                  margin="normal"
+                  name="lastName"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.lastName}
+                  variant="outlined"
               />
             </Grid>
             <Grid
@@ -92,13 +134,17 @@ const navigate = useNavigate();
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Last name"
-                name="lastName"
-                // onChange={handleChange}
-                required
-                value={user.lastName}
-                variant="outlined"
+                error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  helperText={touched.email && errors.email}
+                  label="Email Address"
+                  margin="normal"
+                  name="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="email"
+                  value={values.email}
+                  variant="outlined"
               />
             </Grid>
             <Grid
@@ -107,63 +153,78 @@ const navigate = useNavigate();
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
-                // onChange={handleChange}
-                required
-                value={user.email}
-                variant="outlined"
+                error={Boolean(touched.phoneNumber && errors.phoneNumber)}
+                  fullWidth
+                  helperText={touched.phoneNumber && errors.phoneNumber}
+                  label="phoneNumber"
+                  margin="normal"
+                  name="phoneNumber"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  
+                  value={values.phoneNumber}
+                  variant="outlined"
               />
-            </Grid>
-            <Grid
+            </Grid> 
+             <Grid
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                // onChange={handleChange}
-                type="number"
-                value={user.PhoneNumber}
-                variant="outlined"
+                error={Boolean(touched.adress && errors.adress)}
+                  fullWidth
+                  helperText={touched.adress && errors.adress}
+                  label="adress"
+                  margin="normal"
+                  name="adress"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  
+                  value={values.adress}
+                  variant="outlined"
               />
             </Grid>
-            <Grid
+             <Grid
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                // onChange={handleChange}
-                required
-                value={user.githubusername}
-                variant="outlined"
+               error={Boolean(touched.githubLink && errors.githubLink)}
+                  fullWidth
+                  helperText={touched.githubLink && errors.githubLink}
+                  label="githubLink"
+                  margin="normal"
+                  name="githubLink"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  
+                  value={values.githubLink}
+                  variant="outlined"
+               
               />
-            </Grid>
-            <Grid
+            </Grid> 
+             <Grid
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Select State"
-                name="state"
-                // onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={user.location}
-                variant="outlined"
+             isSubmitting   error={Boolean(touched.linkedin && errors.linkedin)}
+                  fullWidth
+                  helperText={touched.linkedin && errors.linkedin}
+                  label="linkedin"
+                  margin="normal"
+                  name="linkedin"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  
+                  value={values.linkedin}
+                  variant="outlined"
               >
               </TextField>
-            </Grid>
+            </Grid> 
           </Grid>
         </CardContent>
         <Divider />
@@ -173,15 +234,22 @@ const navigate = useNavigate();
           p={2}
         >
           <Button
-            color="primary"
-            variant="contained"
-            onClick={update}
+           color="primary"
+                     disabled={isSubmitting}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained" 
           >
-            Save details
-          </Button>
-        </Box>
-      </Card>
-    </form>
+             Save details
+           </Button>
+         </Box> 
+       </Card>
+     </form> )}
+    </Formik>}
+    </Container>
+  </Page>
+    
   );
 };
 
