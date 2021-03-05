@@ -57,8 +57,8 @@ const GetJobOffer = ({ className, ...rest }) => {
     
       <Card>
         <CardHeader
-          subheader="The information mise par le recruteur"
-          title="Lecture Job Offer"
+          subheader="All the Information you need about the JOb Offer"
+          title="Lecture "
         />
         <Divider />
         <CardContent>
@@ -71,94 +71,94 @@ const GetJobOffer = ({ className, ...rest }) => {
               md={6}
               xs={12}
             >
-              <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+              <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
               <h4>Societe name</h4>
+                
+                  
+                </Typography>
                   {jobOffer.SocieteName}
-                  
-                </Typography>
-                
             </Grid>
             <Grid
               item
               md={6}
               xs={12}
             >
-              <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+              <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
               <h4>Societe Description</h4>
-                  {jobOffer.JobDescription}
+                 
                 </Typography>
-                
+                 {jobOffer.JobDescription}
             </Grid>
             <Grid
               item
               md={6}
               xs={12}
             >
-               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+               <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
                  <h4> Job Requirements</h4>
-                  {jobOffer.JobRequirements}
+                  
                   
                 </Typography>
-                
+                {jobOffer.JobRequirements}
             </Grid>
               <Grid
               item
               md={6}
               xs={12}
             >
-               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+               <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
                  <h4> Job Benefits</h4>
-                  {jobOffer.JobBenefits}
+                  
                   
                 </Typography>
-                
+                {jobOffer.JobBenefits}
             </Grid>
                 <Grid
               item
               md={6}
               xs={12}
             >
-               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+               <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
                  <h4> Job HowToApply</h4>
-                  {jobOffer.HowToApply}
+                
                   
                 </Typography>
-                
+                  {jobOffer.HowToApply}
             </Grid>
             <Grid
               item
               md={6}
               xs={12}
             >
- <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+ <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
                   <h4>Societe name</h4>
-                  {jobOffer.JobDescription}
+                 
                 </Typography>
-                
+                 {jobOffer.JobDescription}
             </Grid>
              <Grid
               item
               md={6}
               xs={12}
             >
-               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+               <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
                  <h4>Recruteur Name </h4>
-                  {jobOffer.recruteurName}
+                 
                   
                 </Typography>
-                
+                 {jobOffer.recruteurName}
             </Grid>
             <Grid
               item
               md={6}
               xs={12}
             >
-               <Typography classes={{root: classes.id}} gutterBottom variant="subtitle1">
+               <Typography variant="body2" style={{ cursor: 'pointer' }} gutterBottom variant="subtitle1">
                  <h4>Societe name</h4>
-                  {jobOffer.SocieteName}
+                  
                   
                 </Typography>
-                
+                {jobOffer.SocieteName}
             </Grid>
             <Grid
               item

@@ -7,9 +7,9 @@ const Toolbar = () => {
 
   return (
       <section>
-    <div className="photo" style={{margin: '-24px'}}>
+    <div className="photo" style={{margin: '-24px' ,  background: "#3171b2", display:'flex', justifyContent:'center'}}>
      
-       <img src="https://media3.giphy.com/media/3oKIPz6FWhfMAOsZAk/giphy.gif"/>
+       <img  style={{width:"505px",height:"300px"}} src="https://media3.giphy.com/media/3oKIPz6FWhfMAOsZAk/giphy.gif"/>
     
     </div>
     </section>
