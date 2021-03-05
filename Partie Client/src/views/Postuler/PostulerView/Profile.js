@@ -40,7 +40,7 @@ const Profile = ({ className, ...rest }) => {
         >
           <Avatar
             className={classes.avatar}
-            src='/static/images/avatars/avatar_6.png'
+            src={`http://localhost:3003/${user.photo}`}
           />
           <Typography
             color="textPrimary"

@@ -16,14 +16,6 @@ import {
 
 import  {useSelector} from 'react-redux';
 
-// const user = {
-//   avatar: '/static/images/avatars/avatar_6.png',
-//   city: 'Los Angeles',
-//   country: 'USA',
-//   jobTitle: 'Senior Developer',
-//   name: 'Katarina Smith',
-//   timezone: 'GTM-7'
-// };
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -59,12 +51,7 @@ const Profile = ({ className, ...rest }) => {
           >
             {user.name}
           </Typography>
-          {/* <Typography
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${user.city} ${user.country}`}
-          </Typography> */}
+         
           <Typography
             className={classes.dateText}
             color="textSecondary"
@@ -81,7 +68,7 @@ const Profile = ({ className, ...rest }) => {
           fullWidth
           variant="text"
         >
-          {/* Upload picture */}
+         
         </Button>
       </CardActions>
     </Card>
