@@ -19,7 +19,10 @@ import { IconButton } from '@material-ui/core';
 import { Link as RouterLink,   useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CameraRollIcon from '@material-ui/icons/CameraRoll';
- import ReactRecorder from '../../recorder/recordrtc-react/src/RecordPage.react';
+
+import ReactRecorder from '../../recorder/recordrtc-react/src/RecordPage.react';
+
+
 const useStyles = makeStyles(() => ({
   root: {}
 }));
@@ -28,6 +31,7 @@ const ProfileDetails = ({ className, ...rest }) => {
   const {id}=useParams();
   const classes = useStyles();
   const user=useSelector((state =>state.user))
+  const navigate = useNavigate();
  
  const [open, setOpen] = useState(false);
  const [video,setVideo] = useState(false);
@@ -63,6 +67,8 @@ const ProfileDetails = ({ className, ...rest }) => {
        const res = await axios.post(`http://localhost:3003/application/${user._id}`,fd, {
         headers: {
           'Content-Type': 'multipart'}});
+
+navigate('/app/Job-offer', { replace: true })
     }
  
  

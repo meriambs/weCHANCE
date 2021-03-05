@@ -121,6 +121,82 @@ const navigate = useNavigate();
                   variant="outlined"
               />
             </Grid>
+              <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                // error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  // helperText={touched.email && errors.email}
+                  label="phoneNumber"
+                  margin="normal"
+                  name="phoneNumber"
+                  // onBlur={handleBlur}
+                  // onChange={handleChange}
+                  // type="email"
+                  value={user.phoneNumber}
+                  variant="outlined"
+              />
+            </Grid>
+              <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                // error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  // helperText={touched.email && errors.email}
+                  label="adress"
+                  margin="normal"
+                  name="adress"
+                  // onBlur={handleBlur}
+                  // onChange={handleChange}
+                  type="adress"
+                  value={user.adress}
+                  variant="outlined"
+              />
+            </Grid>
+              <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                // error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  // helperText={touched.email && errors.email}
+                  label="githubLink"
+                  margin="normal"
+                  name="githubLink"
+                  // onBlur={handleBlur}
+                  // onChange={handleChange}
+                  type="githubLink"
+                  value={user.githubLink}
+                  variant="outlined"
+              />
+            </Grid>
+              <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                // error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  // helperText={touched.email && errors.email}
+                  label="linkedin"
+                  margin="normal"
+                  name="linkedin"
+                  // onBlur={handleBlur}
+                  // onChange={handleChange}
+                  type="linkedin"
+                  value={user.linkedin}
+                  variant="outlined"
+              />
+            </Grid>
             
           </Grid>
         </CardContent>
